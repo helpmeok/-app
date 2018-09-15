@@ -1,0 +1,156 @@
+<div class="viewbox">
+    <div class="header">
+        <div class="wrap">
+            <div class="l">
+                <a v-if = '0 == access_type' back class="button"><i class = "icon-back"></i></a>
+                <a v-if = '1 == access_type' v-click = 'm_transfer_close' class="button"><i class = "icon-close"></i></a>
+            </div>
+            <div class="c">
+                <em>{{title}}</em>
+            </div>
+            <div class="r">
+            </div>
+        </div>
+    </div>
+    <div class = 'body'>
+        <sep-scroll>
+            <sep-render :login = 'false'>
+                <section slot='entity'>
+                    <sep-swiper  height = '255px' :autoplay="0" :pagination="true">
+    					<div v-click = 'm_photo_browse' v-for = 'el in $model.images' class="swiper-slide">
+    			            <img :data-src="el" class="swiper-lazy" />
+                            <div class="swiper-lazy-preloader"></div>
+    			        </div>
+                        <div v-if = '$model.images && 0 == $model.images.length' class="swiper-slide placeholder">
+                            <i class = 'icon-pic'></i>
+                            <p>暂无细节图</p>
+                        </div>
+    				</sep-swiper>
+                    <div class="layout info">
+                        <ul>
+                            <li>
+                                <!-- link(可链接) link-arrow(带箭头链接) -->
+                                <div class="item">
+                                    <div class="content">
+                                        <div class="props">
+                                            <div class="prop">
+                                                <div class="l">
+                                                    {{$model.name}}
+                                                </div>
+                                                <div class="r">
+                                                    <div class = 'share button' v-click = 'm_share'>
+                                                        <i class = 'icon-share-dotfill'></i>
+                                                        <p>
+                                                            分享
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="other">
+
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <!-- link(可链接) link-arrow(带箭头链接) -->
+                                <div class="item">
+                                    <div class="content">
+                                        <div class="props">
+                                             <div class = 'price'>
+                                                <em>
+                                                    <i class = 'icon-lightfill'></i> 秒杀价 
+                                                </em>
+                                                <b>
+                                                    <small>￥</small>
+                                                    {{$model.startPrice}}
+                                                </b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="other">
+                                        <div v-if = '2 == $model.state' v-click = 'm_refresh_captcha' class = 'button rob'>抢</div> 
+                                        <div v-if = '3 == $model.state' class = 'finish'></div>
+                                        <div v-if = '4 == $model.state' class = 'end'></div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                     <div class = 'size'>
+                        <div class = 'wrap'>
+                            尺寸描述：{{$model.specification}}
+                        </div>
+                    </div>
+                    <div class = 'flexbox append'>
+                        <em class = 'primary'>
+                            <small>年限</small> <p><b>{{$model.year ? $model.year : '--'}}</b></p>
+                        </em>
+                        <em class = 'primary'>
+                            <small>品相等级</small> <p><b>{{$model.grade ? $model.grade : '--'}}</b></p>
+                        </em>
+                    </div>
+
+                    <div class = 'desc'>
+                        <em>
+                            藏品描述
+                        </em>
+                        <p v-if = '$model.description'>
+                            {{$model.description}}
+                        </p>
+                        <small v-else>
+                            <i class = 'icon-creative'></i> 
+                            <p>暂无描述信息</p>
+                        </small>
+                    </div>
+                </section>
+            </sep-render>
+            <section slot="bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+
+        <sep-pop class = 'done' :modal = 'true'>
+            <div class = 'bg'></div>
+            <em>恭喜您获得此件佳品</em>
+            <section>
+                <sep-image height = '180px' :src = '$model.image'></sep-image>
+                <a v-click = 'pop.m_hide' class = 'button default red border-radius-far margin-top-far'>我知道了</a>
+            </section>
+        </sep-pop>
+        <sep-window title = "提交验证">
+            <form v-form = 'form'>
+                <div class="layout">
+                    <ul>
+                        <li>
+                            <div class="item field">
+                                <div class="content">
+                                    <div class="edit">
+                                        <input class = 'input-captcha' v-model = 'captcha' type="tel" v-rules = '{required : true, minlength : 5}' data-required-msg = '请输入验证码' data-minlength-msg = '验证码是5位数字哦' maxlength = '5' placeholder="请输入验证码">
+                                    </div>
+                                </div>
+                                <div class="other">
+                                        
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item field">
+                                <div class="content">
+                                    <sep-image v-click = 'm_refresh_captcha' height = '40px' width = '50%' :src = 'base64_captcha'></sep-image>
+                                </div>
+                                <div class="other">
+                                    <a class = 'button fz-small fg-gray' v-click = 'm_refresh_captcha'>看不清楚,换一张</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class = 'padding-far'>
+                    <sep-button v-click = 'form.m_submit' text = '确认竞拍' wtext = '请稍后..' class = 'submit red default'></sep-button>
+                </div>
+            </form>
+        </sep-window>
+    </div>
+</div>

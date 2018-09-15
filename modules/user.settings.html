@@ -1,0 +1,78 @@
+<div class = "viewbox">
+	<div class = "header">
+		<div class = "wrap">
+			<div class = "l">
+				<a back class = "button"><i class = "icon-back"></i></a>
+			</div>
+			<div class = "c">
+				<em>{{title}}</em>
+			</div>
+			<div class = "r">
+
+			</div>
+		</div>
+	</div>
+	<div class = 'body'>
+		<sep-scroll>
+			<div class="layout">
+				<ul>
+					<li>
+						<!-- link(可链接) link-arrow(带箭头链接) -->
+						<div class="button item link-arrow" push="problem">
+							<div class="content">
+								常见问题
+							</div>
+							<div class="other">
+								
+							</div>
+						</div>
+					</li>
+					<li>
+						<!-- link(可链接) link-arrow(带箭头链接) -->
+						<div class="button item link-arrow" push="about">
+							<div class="content">
+								关于我们
+							</div>
+							<div class="other">
+								
+							</div>
+						</div>
+					</li>
+					<li>
+						<!-- link(可链接) link-arrow(带箭头链接) -->
+						<div class="button item link-arrow" push="user.feedback">
+							<div class="content">
+								用户反馈
+							</div>
+							<div class="other">
+								
+							</div>
+						</div>
+					</li>
+					<li class = 'margin-top-far'>
+						<!-- link(可链接) link-arrow(带箭头链接) -->
+						<div class="item">
+							<div class="content">
+								拍卖声音
+							</div>
+							<div class="other">
+								<div class="switch button">
+									<input type="checkbox" name="switch" v-model="state">
+									<i></i>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+			<div class = 'padding-far' v-if="iswx">
+				<sep-button v-click = 'm_logout' text = '退出' wtext = '请稍后...' class = 'default red border-radius-near submit'></sep-button>
+			</div>
+			<section slot = "bottom">
+				<sep-dev></sep-dev>
+			</section>
+		</sep-scroll>
+	</div>
+</div>
+

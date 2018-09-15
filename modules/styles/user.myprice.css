@@ -1,0 +1,150 @@
+.user-myprice .entity .bitDate {
+    font-size: 20px;
+    text-indent: 1em;
+    color: black;
+    letter-spacing: 2px;
+    margin: 20px 0px;
+}
+
+.user-myprice .entity .item {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-myprice .entity .item .item_top {
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    height: 90px;
+   
+}
+
+.user-myprice .entity .item .item_bottom {
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+.user-myprice .entity .item .item_bottom .price_item1 {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #80808061;
+    padding: 5px 0px;
+    color: #000000b8;
+}
+
+.user-myprice .entity .item .item_bottom .price_item1 span {
+    display: inline-block;
+    text-align: center;
+}
+
+.user-myprice .entity .item .item_bottom .price_item1 span:nth-of-type(1) {
+    width: 40%;
+}
+
+.user-myprice .entity .item .item_bottom .price_item1 span:nth-of-type(2) {
+    width: 30%;
+}
+
+.user-myprice .entity .item .item_bottom .price_item1 span:nth-of-type(3) {
+    width: 30%;
+}
+
+.user-myprice .entity .item .item_bottom .price_item2 {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 0px;
+    color: grey;
+}
+
+.user-myprice .entity .item .item_top .goodsImage {
+    width: 35%;
+    height: 90px;
+    border-radius: 10px;
+}
+
+.user-myprice .entity .item .item_top .icon_box:after {
+    content: "";
+    display: inline-block;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    height: 15px;
+    width: 15px;
+    border-width: 2px 2px 0 0;
+    border-color: #e41616f5;
+    border-style: solid;
+    position: relative;
+    margin-left: .3em;
+    margin-top: 35px;
+}
+
+.user-myprice .entity .item .item_top .readed {
+    position: absolute;
+    right: -3px;
+    top: -8px;
+    border-radius: 50%;
+    color: white;
+    background-color: #e41616f5;
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    line-height: 22px;
+    font-size: 10px;
+}
+
+.user-myprice .entity .item .item_top .active {
+    animation: rotate1 0.5s 1;
+    -webkit-animation: rotate1 0.5s 1;
+    animation-fill-mode: forwards;
+}
+
+.user-myprice .entity .item .item_top .normal {
+    animation: rotate2 0.5s 1;
+    -webkit-animation: rotate2 0.5s 1;
+    animation-fill-mode: forwards;
+}
+
+.user-myprice .entity .item {
+    width: 94%;
+    margin-left: 3%;
+    margin-top: 30px;
+    border-radius: 15px;
+    background-color: #fff;
+}
+
+.user-myprice .entity ul li {
+    background-color: #f1f1f1;
+}
+
+.user-myprice .entity .item .item_top .goodsTitle {
+    margin-left: 10px;
+    width: 65%;
+}
+
+@keyframes rotate1 {
+    from {
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+    }
+}
+
+@keyframes rotate2 {
+    from {
+        transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+    }
+    to {
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+    }
+}

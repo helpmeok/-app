@@ -1,0 +1,447 @@
+<div class="viewbox">
+	<div class="header">
+		<div class="wrap">
+			<div class="l">
+				<a back class="button">
+					<i class="icon-back"></i>
+				</a>
+			</div>
+			<div class="c">
+				<em>{{title}}</em>
+			</div>
+			<div class="r">
+
+			</div>
+		</div>
+	</div>
+	<div class='body'>
+		<div class="canvas" :class="{'is_show_canvas':canvas}">
+			<canvas id="main" :height="ch*2" :width="cw*2"></canvas>
+		</div>
+		<div id="qrcode" style="opacity: 0;"></div>
+		<div class="mask_canvas" v-if="is_show_mask" v-click="is_show_canvas">
+			<img :src="canvas_image" alt="" :style="{width:cw+'px',height:ch+'px'}">
+		</div>
+		<sep-download-app class='top'></sep-download-app>
+		<sep-scroll :style='style'>
+			<sep-render :login='false'>
+				<section slot="entity">
+					<sep-swiper height='255px' :autoplay="3000" :pagination="true">
+						<div v-click='m_photo_browse' v-for='el in $model.collectionPic' class="swiper-slide">
+							<img :data-src="el" class="swiper-lazy" />
+							<div class="swiper-lazy-preloader"></div>
+						</div>
+						<div v-if='$model.collectionPic && 0 == $model.collectionPic.length' class="swiper-slide placeholder">
+							<i class='icon-pic'></i>
+							<p>暂无细节图</p>
+						</div>
+					</sep-swiper>
+
+					<div class='date'>
+						{{$model.screenStartTime}} 开拍
+					</div>
+					<div class='detail'>
+						<div class='block flexbox'>
+							<div class='l primary'>
+								<em>
+									{{$model.collectionName}}
+								</em>
+							</div>
+							<div class='r'>
+								<div class='share button' v-click='m_share'>
+									<i class='icon-share-dotfill'></i>
+									<p>
+										分享
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class='block flexbox' v-if="titleType==6">
+							<div class='l'>
+								<p>
+									RMB
+								</p>
+								<p>
+									当前价
+								</p>
+							</div>
+							<div class='r primary'>
+								<span class='price'>
+									<small>￥</small>{{$model.startPrice}}</span>
+							</div>
+						</div>
+						<div class='block flexbox' v-if="titleType!=6">
+							<div class='l' v-if=" '已卖出' == $model.auctionState ">
+								<p>
+									RMB
+								</p>
+								<p>
+									成交价
+								</p>
+							</div>
+							<div class='l' v-if="0 != $model.copy_currentPrice && '已卖出' != $model.auctionState ">
+								<p>
+									RMB
+								</p>
+								<p>
+									当前价
+								</p>
+							</div>
+							<div class='r primary'>
+								<span class='fg-red' v-if="0 == $model.copy_currentPrice && '流拍' != $model.auctionState">
+									暂时无人出价
+								</span>
+								<span class='fg-gray' v-if=" '流拍' == $model.auctionState">
+									此件藏品流拍
+								</span>
+								<span v-if="0 != $model.copy_currentPrice && '已卖出' != $model.auctionState " class='price'>
+									<small>￥</small>{{$model.copy_currentPrice}}</span>
+							</div>
+						</div>
+						<div class='block flexbox fz-medium fg-gray' v-if="titleType!=6">
+							<div class='l primary'>
+								起拍价格:
+								<span class='price'>
+									<small>￥</small>{{$model.startPrice}}</span>
+							</div>
+							<div class='r primary'>
+
+							</div>
+						</div>
+						<div v-if='float_price < 50000' class='block flexbox fz-medium fg-gray'>
+							<div class='l primary' v-if="titleType!=6">
+								加价幅度:
+								<span v-if='-1 != float_price' class='price'>
+									<small>￥</small>{{float_price}}</span>
+								<em class='number' v-else>2、5、8、0</em>
+							</div>
+							<div class='l primary' v-else>
+
+							</div>
+
+							<div class='r' v-click="m_show_image">
+								<img src="modules/images/qrCodeBtn.png" alt="" style="width: 30px;height: 30px;">
+							</div>
+						</div>
+					</div>
+
+					<div class="sty" v-if="titleType!=6">
+						<div class='box flexbox'>
+							<div class="l">
+								<i class="icon-right"></i>
+							</div>
+							<div class="c primary">
+
+								<a v-if="$model.entrustPrice" class='button' v-click='{method : outprice.m_show, args : 2}'>
+									当前委托价：
+									<span class='price'>
+										<small>￥</small>{{$model.entrustPrice}}</span>
+								</a>
+								<a v-else class='button' v-click='{method : m_outprice, args : 2}' style="color:red;">委托出价</a>
+
+							</div>
+							<div class="r">
+								<i class="icon-right"></i>
+							</div>
+						</div>
+					</div>
+
+					<div class="layout" v-if="titleType!=6">
+						<ul>
+							<li>
+								<div class="button item link-arrow" v-click="m_push_offer_list">
+									<div class="content">
+										出价记录{{offer_len == '0'?'':'('+offer_len+')'}}
+									</div>
+									<div class="other">
+										更多
+									</div>
+								</div>
+							</li>
+							<li v-for='el in offer_list'>
+								<div class="item ">
+									<div class="content">
+										<div class="props">
+											<div class="prop">
+												<span class='nickname fz-medium fg-gray single'>{{el.memberName}}</span>
+												<div class="l">
+													<span class='number fz-medium fg-gray'>{{el.bidTime}}</span>
+												</div>
+												<div class="r">
+													<span class='price fg-red'>
+														<small>￥</small>{{el.bidPrice}}</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="other">
+									</div>
+								</div>
+							</li>
+							<li class='offer-empty' v-if='0 == offer_list.length && user'>
+								<i class='icon-recharge'></i>
+								<em>暂无出价记录</em>
+							</li>
+							<li class='unlogin button' push='user.login' v-if='!user'>
+								<i class='icon-my'></i>
+								<em>登陆后可查看</em>
+							</li>
+						</ul>
+					</div>
+
+					<div class="tab red margin-top-near">
+						<div class="wrap">
+							<div class="button">
+								<input v-model='tab_index' value='0' type="radio" name="radio">
+								<div class="item">
+									<small>
+										藏品详情
+									</small>
+								</div>
+							</div>
+							<div class="button">
+								<input v-model='tab_index' value='3' type="radio" name="radio" v-if="titleType==6">
+								<input v-model='tab_index' value='1' type="radio" name="radio" v-else>
+								<div class="item">
+									<small>
+										{{titleType==6?"抢购规则":"拍卖规则"}}
+									</small>
+								</div>
+							</div>
+							<div class="button">
+								<input v-model='tab_index' value='2' type="radio" name="radio">
+								<div class="item">
+									<small>
+										藏品评论
+									</small>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class='tab-host'>
+						<ul>
+							<li v-if='0 == tab_index'>
+								<div class="padding-far fz-medium">
+									<div class='rules'>
+										<ul>
+											<li>
+												<small>藏品规格：</small>
+												<em>
+													{{$model.specification}}
+												</em>
+											</li>
+											<li>
+												<small>产品年代：</small>
+												<em>
+													{{$model.years}}
+												</em>
+											</li>
+											<li>
+												<small>品相等级：</small>
+												<em>
+													{{$model.grade}}
+												</em>
+											</li>
+
+										</ul>
+									</div>
+									<p class='fg-gray' style="border-bottom: 1px dashed #ccc;padding-bottom: 5px;color:#222222;">
+										{{$model.collectionExplain}}
+									</p>
+									<div class="is_video" v-if="isVideo">
+										<p style="color: #666;margin-top: 5px;">藏品视频</p>
+										<div class="video-box" style="margin-top: 10px;height: 200px;">
+											<video style="width: 100%;" height="200" controls="controls" :poster="posterImage" :src="video" class="video"></video>
+										</div>
+									</div>
+
+								</div>
+								<sep-empty v-else text='暂无藏品详情' icon="icon-favor">
+									请稍后再试~
+								</sep-empty>
+							</li>
+							<li v-if='1 == tab_index'>
+								<div class='article'>
+									<div class='wrap'>
+
+										<ul>
+											<li>
+												<div class='content'>
+													<p class="fg-gray">
+														厦门古美术遵循“公开、公平、公正、诚实信用”的原则，为确保竞买会员、委托方、拍卖方的权益，制定以下规则，如果您参与本拍卖，即认为认同本拍卖规则，请仔细阅读。
+													</p>
+												</div>
+												<div class='content'>
+													<span class='name fg-red'>预展出价：</span>
+													<p class="fg-gray">
+														1．开拍之前，拍卖专场以预展场的形式展现。预展期间允许出价。 2．凡是在预展场出价最高者，且在该藏品拍卖竞价时无人应价高于他，如果该拍品成交价万元以下，可获得奖励减免200元货款；该拍品成交价万元以上，奖励为减免1000元货款。
+													</p>
+												</div>
+												<div class='content'>
+													<span class='name fg-red'>竞价方式：</span>
+													<p class="fg-gray">
+														1．拍卖开始后，竞买会员按竞买阶梯报价（可高于加价梯度报价，但不能低于加价幅度报价）。开始倒计时10秒时间内，即倒计时0之前，有会员应价，10秒倒计时重新开始。直至10秒倒计时内无人应价，此件结拍。 2．拍卖提供三种出价方式： o 直接出价：会员直接输入金额竞拍
+														o 加一手：在当前价上加一个最小加价幅度金额 o 委托出价：委托系统出价。若当前价在委托范围内，由系统自动帮忙出价。竞价金额为当前价加一个最小加价幅度 3．竞价阶梯：5000以内加价幅度为200元整数倍，5000以上加价幅度为500元整数倍，10000以上加价幅度为1000元整数倍，50000以上加价幅度为千位2、5、8、0
+														。
+													</p>
+												</div>
+												<div class='content'>
+													<span class='name fg-red'>交易方式：</span>
+													<p class="fg-gray">
+														拍卖结束后两天内安排付款，货款到账后一到两个工作日内安排发货。会员收货后7天鉴赏期内，有不满意可与管理员协商退货事宜，谢绝恶意退货，如不经协商自行退货的，我们将收取拍品成交价15%的相关费用。若经协商并且收到退货完好，将在两个工作日内财务安排退款。
+													</p>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<!-- <sep-empty text = '暂无拍卖规则' icon = "icon-favor">
+									请稍后再试~
+								</sep-empty> -->
+							</li>
+							<li v-if='2 == tab_index'>
+								<div class="layout" v-if='null != commet_list && 0 != commet_list.length'>
+									<ul>
+										<li v-for="el in commet_list">
+
+											<div class="item ">
+												<div class="content">
+													<div class="props">
+														<div class="prop ">
+															<div class="l">
+																<span class='nickname fz-medium fg-gray'>{{el.memberName}}</span>
+															</div>
+															<div class="r">
+																<span class='number fz-medium fg-gray'>{{el.discussTime}}</span>
+															</div>
+														</div>
+														<p class="fz-small ">
+															{{el.discussContent}}
+														</p>
+													</div>
+												</div>
+												<div class="other">
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<sep-empty v-else text='暂无藏品评论' icon="icon-favor">
+									请稍后再试~
+								</sep-empty>
+							</li>
+							<li v-if='3 == tab_index'>
+								<div class='article'>
+									<div class='wrap'>
+
+										<ul>
+											<li>
+												<div class='content'>
+													<p class="fg-gray">
+														厦门古美术遵循“公开、公平、公正、诚实信用”的原则，为确保会员、委托方、商家的权益，制定以下规则，如果您参与本直播抢购，即认为认同本直播抢购规则，请仔细阅读。
+													</p>
+												</div>
+												<div class='content'>
+													<span class='name fg-red'>抢购方式：</span>
+													<p class="fg-gray">
+														直播开始后，会员可点击下单显示当前藏品信息界面进行抢购。也可以在直播过程中弹出的界面进行下单操作。下单成功后可立即跳转到支付页面进行付款操作。
+													</p>
+												</div>
+												<div class='content'>
+													<span class='name fg-red'>抢购规则：</span>
+													<p class="fg-gray">
+														系统以实际付款订单为准，确定是否抢购成功。藏品数量有限，抢完即止。
+													</p>
+												</div>
+												<div class='content'>
+													<span class='name fg-red'>交易方式：</span>
+													<p class="fg-gray">
+														货款到账后一到两个工作日内安排发货。会员收货后7天鉴赏期内，有不满意可与管理员协商退货事宜，谢绝恶意退货，如不经协商自行退货的，我们将收取拍品成交价15%的相关费用。若经协商并且收到退货完好，将在两个工作日内财务安排退款。
+													</p>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+
+				</section> 
+			</sep-render>
+			<section slot="bottom">
+				<sep-dev></sep-dev>
+			</section>
+		</sep-scroll>
+		<!-- 出价接口(start) -->
+		<sep-outprice mode='preview' :current_price='$model.currentPrice' :id='$model.collectionId' :screening_id='$model.screeningId'
+		    :auction_state='$model.auctionState'></sep-outprice>
+		<!-- 出价接口(end) -->
+		<sep-options title="请选择出价方式">
+			<a class="button" v-click='{method : m_outprice, args : 1}'>自由出价</a>
+			<a class="button" v-click='{method : m_outprice, args : 2}'>委托出价</a>
+			<a class="button" v-click='{method : m_outprice, args : 3}'>加一手</a>
+			<a v-click="options.m_hide" class="button fg-red margin-top-near">取消</a>
+		</sep-options>
+		<div class='footer' v-if='$model.collectionId'>
+			<div class='flexbox operation' v-if='2 != tab_index'>
+				<div class='l primary'>
+					<div class='flexbox'>
+						<a v-click='m_toggle_zan' class='button' :class="{'fg-red' : $model.praised}">
+							<i :class="{'icon-appreciatefill' : $model.praised, 'icon-appreciate' : !$model.praised}"></i> 赞(
+							<span class='number'>{{$model.praiseNum}}</span>)</a>
+						<a v-click='m_toggle_focus' class='button' :class="{'fg-red' : $model.attentioned}">
+							<i :class="{'icon-favor' : !$model.attentioned, 'icon-favorfill' : $model.attentioned}"></i> 关注</a>
+					</div>
+				</div>
+				<div class='r primary' v-if="'预展中' == $model.auctionState && titleType != 6">
+					<div class='button' v-click='m_submit'>
+						<b>出价</b>
+						<p>
+							(保证金：￥{{$model.ensurePrice}}元)
+						</p>
+					</div>
+				</div>
+				<div class='r primary' v-if="'预展中' == $model.auctionState && titleType == 6">
+					<div class='button' style="background-color: #cdcdcd;">
+						<p class="site">去现场</p>
+					</div>
+				</div>
+				<div class='r primary' v-if="'正在拍卖' == $model.auctionState">
+					<div class='button' v-click='m_submit'>
+						<p class="site">去现场</p>
+					</div>
+				</div>
+				<div class='r primary' v-if="'直播中' == $model.auctionState">
+					<div class='button' v-click='m_submit'>
+						<p class="site">去现场</p>
+					</div>
+				</div>
+				<div class='r primary' v-if="'未拍卖' == $model.auctionState">
+					<div class='button' v-click='m_submit'>
+						<p class="site">去现场</p>
+					</div>
+				</div>
+				<div class='r primary' v-if="'已卖出' == $model.auctionState">
+					<div class='button disable' :class='{disable : 0 == auction_state}'>
+						<p class="site">已卖出</p>
+					</div>
+				</div>
+				<div class='r primary' v-if="'流拍' == $model.auctionState">
+					<div class='button disable' :class='{disable : 0 == auction_state}'>
+						<p class="site">流拍</p>
+					</div>
+				</div>
+			</div>
+			<div class='flexbox comment centeralign' v-if='2 == tab_index'>
+				<div class='l primary'>
+					<input @focus='m_comment_input_focus' placeholder='请填写评论内容' v-model='comment_text' />
+				</div>
+				<div class='r'>
+					<a class='button red' v-click='m_add_comment'>添加评论</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

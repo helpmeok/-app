@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <meta name="apple-mobile-web-app-title" content="古美术.H5" />
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>推荐奖励</title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            background-image: url('image/recommend/bg.png');
+            background-size: 100% 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            visibility: hidden;
+        }
+
+        .fg1 {
+            margin: 1rem;
+            width: 6rem;
+            height: 3rem;
+            margin-bottom: 0;
+            margin-top: 0rem;
+        }
+
+        .fg1 img {
+            height: 100%;
+            width: 100%;
+        }
+
+        .fg2 {
+            width: 4rem;
+            margin-left: calc((100% - 4rem)/2);
+            height: .5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: .5rem;
+        }
+
+        .fg2 .line {
+            display: block;
+            border-top: .03rem solid #840600;
+            width: 1.2rem;
+        }
+
+        .fg2 .line_text {
+            display: block;
+            color: #840600;
+            font-size: .3rem;
+            letter-spacing: .01rem;
+            font-weight: bold;
+        }
+
+        p {
+            color: #840600;
+            width: 6rem;
+            font-size: .28rem;
+            margin-left: 1rem;
+            z-index: 999;
+            position: relative;
+        }
+
+        .fg3 {
+            width: 100%;
+            background-image: url('.//image/recommend/fg1.png');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            height: 5rem;
+            position: absolute;
+            bottom: 0;
+        }
+
+        .btn {
+            position: absolute;
+            background-image: url('.//image/recommend/Button.png');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            width: 4rem;
+            height: 1rem;
+            font-size: .36rem;
+            left: calc((100% - 4rem)/2);
+            bottom: .8rem;
+            text-align: center;
+            line-height: 1rem;
+            color: #d81617;
+            z-index: 9999;
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="fg1">
+            <img src="./image/recommend/fg2.png" alt="">
+        </div>
+        <div class="fg2">
+            <span class="line"></span>
+            <span class="line_text">奖励说明</span>
+            <span class="line"></span>
+        </div>
+        <p>1.现金奖励，可提现。</p>
+        <p>2.终身奖励，一旦成功，永久有效，上不封顶。</p>
+        <p>3.二级奖励，例如，你推荐给10个朋友，这10个朋友每人再推荐给10个朋友，那么这110个人所产生的所有实际成交总额，你都可以得到1%的奖励。</p>
+        <p>4.先到先得，同一个朋友，先通过谁的链接注册进来，就成为谁的终身客户，别人抢不走。</p>
+        <div class="fg3">
+            <div class="btn">向好友推荐古美术</div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        +
+        (function () {
+            var _size = 'js/recommend.js?v=' + Date.now();
+            var _s = document.createElement('script');
+            _s.src = _size;
+            document.body.appendChild(_s);
+        })();
+    </script>
+</body>
+
+</html>

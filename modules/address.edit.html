@@ -1,0 +1,102 @@
+<div class = "viewbox">
+	<div class = "header">
+		<div class = "wrap">
+			<div class = "l">
+				<a back class = "button"><i class = "icon-back"></i></a>
+			</div>
+			<div class = "c">
+				<em>{{title}}</em>
+			</div>
+			<div class = "r">
+			</div>
+		</div>
+	</div>
+	<div class = 'body'>
+		<sep-scroll :style="other.user ? {bottom: '50px'} : ''">
+			<form v-form = 'form'>
+				<sep-render>
+					<section slot = 'entity'>
+						<input v-model = "$model.addressId" type = 'hidden' />
+						<div class="layout margin-top-far">
+							<ul>
+								<li>
+									<div class="item field">
+										<div class="content">
+											<em class="name">
+												联系人
+											</em>
+											<div class="edit">
+												<input v-model = "$model.addressee" type="text" v-rules = "{required : true}" data-required-msg = "联系人不可为空" placeholder="请输入联系人">
+											</div>
+										</div>
+										<div class="other">
+
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="item field">
+										<div class="content">
+											<em class="name">
+												联系方式
+											</em>
+											<div class="edit">
+												<input v-rules = "{required : true, tel : true}" data-required-msg = "联系方式不可为空" v-model = "$model.mobile" type="tel" data-tel-msg = "手机号格式不正确" placeholder="请输入联系方式">
+											</div>
+										</div>
+										<div class="other">
+
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="item field topalign">
+										<div class="content">
+											<em class="name">
+												收货地址
+											</em>
+											<div class="edit">
+												<textarea v-model = "$model.addressDetail" maxlength = "500" placeholder="请输入收货地址"></textarea>
+												<span class="counter">
+													{{$model.addressDetail.length}} / 500
+												</span>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="margin-top-far">
+									<div class="item field">
+										<div class="content">
+											<em class="name">
+												设为默认
+											</em>
+											<div class="edit">
+												<div class="switch button">
+													<input v-model="state" type="checkbox" name="switch">
+													<i>
+													</i>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</section>
+
+				</sep-render>
+				
+			</form>
+			<section slot = "bottom">
+				<sep-dev></sep-dev>
+			</section>
+
+		</sep-scroll>
+		<div class = "footer center" v-if="null != other.user">
+			<div class = "bg-white">
+				<sep-button v-if = 'other.user' class = 'submit save' text = '保存' :loading = 'false' wtext = '保存中..' v-click="form.m_submit"></sep-button>
+			</div>
+		</div>
+	</div>
+</div>
+

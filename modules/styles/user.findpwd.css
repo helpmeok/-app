@@ -1,0 +1,13 @@
+.user-findpwd .button.req-code.disable {
+	background-color:#eee;
+	color:#999;
+}
+
+.user-findpwd .layout>ul>li .item .other .but{
+    width: 92px;
+    height: 32px;
+    box-shadow: 0px 0px 2px #ccc;
+    display: block;
+    border-radius: 4px;
+    overflow: hidden;
+}

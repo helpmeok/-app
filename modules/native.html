@@ -1,0 +1,30 @@
+<div class = "viewbox">
+	<div class = "header">
+		<div class = "wrap">
+			<div class = "l">
+				<a back class = "button"><i class = "icon-back"></i></a>
+			</div>
+			<div class = "c">
+				<em>{{title}}</em>
+			</div>
+			<div class = "r">
+
+			</div>
+		</div>
+	</div>
+	<div class = 'body'>
+		<sep-scroll>
+			<div class = 'padding-far'>
+				<a v-click = 'm_get_env' class = 'button red default'>获取环境</a>	
+				<a v-click = 'm_get_user_token' class = 'button red default margin-top-far'>获取用户Token</a>	
+				<a v-click = 'm_pay' class = 'button red default margin-top-far'>调用支付</a>	
+				<a v-click = 'm_login' class = 'button red default margin-top-far'>调用登陆</a>	
+			</div>
+			<section slot = "bottom">
+				<sep-dev></sep-dev>
+			</section>
+		</sep-scroll>
+	</div>
+
+</div>
+

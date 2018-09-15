@@ -1,0 +1,119 @@
+<div class="viewbox">
+	<div class="header">
+		<div class="wrap">
+			<div class="l">
+				<a back class="button">
+					<i class="icon-back"></i>
+				</a>
+			</div>
+			<div class="c">
+				<em>{{title}}</em>
+
+			</div>
+			<div class="r">
+
+			</div>
+		</div>
+	</div>
+	<div class='body'>
+		<sep-scroll :style="{bottom: '50px'}">
+			<form v-form='form'>
+				<div class="layout margin-top-far">
+					<ul>
+						<li>
+							<div class="item field">
+								<div class="content">
+									<em class="name">
+										手机号:
+									</em>
+									<div class="edit">
+										<input disabled='disabled' class='mobile' v-rules='{required : true, tel : true}' data-tel-msg='手机格式不正确' data-required-msg='请输入手机号码
+										' type="text" placeholder="请输入手机号码" v-model='model.mobile'>
+									</div>
+								</div>
+								<div class="other">
+
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item field">
+								<div class="content">
+									<em class="name">
+										支付密码:
+									</em>
+									<div class="edit">
+										<input type="password" v-rules='{minlength : 6, required : true}' data-minlength-msg='支付至少6位数' data-required-msg='支付密码不可为空'
+										    placeholder="请输入支付密码" v-model='model.amountPass'>
+									</div>
+								</div>
+								<div class="other">
+
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item field">
+								<div class="content">
+									<em class="name">
+										确认密码:
+									</em>
+									<div class="edit">
+										<input type="password" v-rules='{minlength : 6, required : true}' data-minlength-msg='确认支付密码至少6位数' data-required-msg='确认密码不可为空'
+										    placeholder="请再次输入支付密码" v-model='model.amountPassConfirm'>
+									</div>
+								</div>
+								<div class="other">
+
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item field">
+								<div class="content">
+									<em class="name">
+										图片验证
+									</em>
+									<div class="edit">
+										<input class='imgcode' type="tel" placeholder="请输入计算结果" v-rules='{required : true }' data-tel-msg='计算结果错误' data-required-msg='请输入计算结果'
+										    v-model="model.randCode">
+									</div>
+								</div>
+								<div class="other">
+									<div class="but">
+										<img :src='src' alt="" v-click='m_img_code' />
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item field">
+								<div class="content">
+									<em class="name">
+										验证码:
+									</em>
+									<div class="edit">
+										<input type="tel" maxlength='6' placeholder="请输入验证码" v-rules='{required : true, minlength : 6}' data-minlength-msg='验证码至少6位'
+										    data-required-msg='请输入验证码' v-model='model.smsCode'>
+									</div>
+								</div>
+								<div class="other">
+									<sep-button :loading='false' text='获取验证码' :wtext='wtext' class="red medium border-radius-far req-code" v-click="m_get_code">
+									</sep-button>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</form>
+			<section slot="bottom">
+				<sep-dev></sep-dev>
+			</section>
+		</sep-scroll>
+		<div class="footer center">
+			<div class="bg-white">
+				<sep-button class='submit save' text='保存' wtext='保存中..' v-click="form.m_submit"></sep-button>
+			</div>
+		</div>
+	</div>
+</div>

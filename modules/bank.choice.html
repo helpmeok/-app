@@ -1,0 +1,61 @@
+<div class = "viewbox">
+	<div class = "header">
+		<div class = "wrap">
+			<div class = "l">
+				<a back class = "button"><i class = "icon-back"></i></a>
+			</div>
+			<div class = "c">
+				<em>{{title}}</em>
+			</div>
+			<div class = "r">
+
+			</div>
+		</div>
+	</div>
+	<div class = 'body'>
+		<sep-scroll>
+			<sep-render>
+			    <section slot='entity'>
+			    	<div class="layout">
+			    	    <ul>
+			    	        <li v-for="el in $model.list" >
+			    	            <!-- link(可链接) link-arrow(带箭头链接) -->
+			    	            <div class="item button" v-click="m_choose(el)">
+			    	                <div class="media medium">
+			    	                    <img :src="el.bankIcon">
+			    	                </div>
+			    	                <div class="content">
+			    	                    <div class="props">
+			    	                        <div class="prop">
+			    	                            <div class="l">
+			    	                                {{el.bankName}}
+			    	                            </div>
+			    	                            <div class="r">
+
+			    	                            </div>
+			    	                        </div>
+			    	                        <div class="prop">
+			    	                            <div class="l number fz-medium fg-gray">
+			    	                                尾号6666
+			    	                            </div>
+			    	                            <div class="r fz-medium fg-gray">
+			    	                                储蓄卡
+			    	                            </div>
+			    	                        </div>
+			    	                    </div>
+			    	                </div>
+			    	                <div class="other">
+			    	                </div>
+			    	            </div>
+			    	        </li>
+			    	    </ul>
+			    	</div>
+			    </section>
+		    </sep-render>
+			<section slot = "bottom">
+				<sep-dev></sep-dev>
+			</section>
+		</sep-scroll>
+	</div>
+</div>
+

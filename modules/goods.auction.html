@@ -1,0 +1,430 @@
+<div class="viewbox">
+	<div class="header">
+		<div class="wrap">
+			<div class="l">
+				<a back class="button">
+					<i class="icon-back"></i>
+				</a>
+			</div>
+			<div class="c">
+				<em>
+					{{title}}
+				</em>
+			</div>
+			<div class="r">
+
+			</div>
+		</div>
+	</div>
+	<div class='body'>
+		<sep-actionsheet name="goodsinfo" direction='top'>
+			<div class='rules'>
+				<ul>
+					<li>
+						<div class='flexbox'>
+							<small>藏品规格：</small>
+							<em class='primary'>
+								{{goods.specification ? goods.specification : '--'}}
+							</em>
+						</div>
+					</li>
+					<li>
+						<div class='flexbox'>
+							<div class='l primary flexbox'>
+								<small>产品年代：</small>
+								<em class='primary'>
+									{{goods.years ? goods.years : '--'}}
+								</em>
+							</div>
+							<div class='r primary flexbox'>
+								<small>品相等级：</small>
+								<em class='primary'>
+									{{goods.grade ? goods.grade : '--'}}
+								</em>
+							</div>
+						</div>
+
+					</li>
+
+				</ul>
+			</div>
+
+			<sep-swiper name='swiper' :mapping='thumbs' v-if='model.picUrl' height='150px' effect='cube'>
+				<div v-click='m_photo_browse' v-for='el in model.picUrl' class="swiper-slide">
+					<img :data-src="el" class="swiper-lazy">
+					<div class="swiper-lazy-preloader"></div>
+				</div>
+			</sep-swiper>
+			<div class='thumbs'>
+				<sep-swiper name='thumbs' height='80px' v-if='model.picUrl'>
+					<div v-for='el in model.picUrl' class="swiper-slide">
+						<img :src="el">
+					</div>
+				</sep-swiper>
+			</div>
+			<div class='more button' v-click='m_push_more'>
+				<i class='icon-attention'></i> 查看更多</div>
+		</sep-actionsheet>
+		<audio class='audio'></audio>
+		<section class='area'>
+			<transition name='scale'>
+				<div class='loading' v-if='0 == status'>
+					<div class='tip'>
+						<div class='wrap'>
+							<i class='icon-comment'></i>
+							<p>
+								正在加入聊天室...
+							</p>
+						</div>
+					</div>
+				</div>
+			</transition>
+			<transition name='fade'>
+
+				<div class='success' v-if='1 == status'>
+					<div class='count-down ev-prevent' v-if='timer > 0'>
+						<div class='wrap'>
+							<b :class='{on : count_down_on, warn : timer <= 3}'>
+								{{timer}}
+							</b>
+						</div>
+					</div>
+
+					<div class='preview'>
+
+						<div class='wrap flexbox'>
+							<div class='l flexbox'>
+								<section v-if='model.leaderName' class='primary flexbox centeralign'>
+									<div class='headimgurl'>
+										<img :src='model.leaderPicUrl' />
+									</div>
+									<span class='nickname primary singleline'>
+										{{model.leaderName}}
+									</span>
+								</section>
+								<section v-else class='primary flexbox centeralign'>
+									<em>暂时无人出价</em>
+								</section>
+							</div>
+							<div class='r primary'>
+								<div class='flexbox centeralign' v-if='3 == model.auctionState'>
+									<div class='primary margin-right-far'>
+										<p v-if='model.leaderName'>
+											成交价格:
+											<strong class='price deal'>
+												<small>￥</small>{{model.currentPrice}}</strong>
+										</p>
+									</div>
+									<a v-if='null != user' v-click='goodsinfo.m_toggle' :class="{'on' : goodsinfo.status}" class='ctrl button icon-roundright'></a>
+								</div>
+								<div v-if='5 == model.auctionState' class='flexbox centeralign'>
+									<div class='primary margin-right-far'>
+										<p>
+											已流拍
+										</p>
+									</div>
+									<a v-if='null != user' v-click='goodsinfo.m_toggle' :class="{'on' : goodsinfo.status}" class='ctrl button icon-roundright'></a>
+								</div>
+								<div v-if='2 == model.auctionState' class='flexbox centeralign'>
+									<div class='primary margin-right-far'>
+										<p v-if='model.leaderName'>
+											最新出价:
+											<strong class='price'>
+												<small>￥</small>{{model.currentPrice}}</strong>
+										</p>
+										<p v-else='model.leaderName'>
+											起拍价格:
+											<strong class='price'>
+												<small>￥</small>{{model.startPrice}}</strong>
+										</p>
+										<p>
+											加价幅度:
+											<strong v-if='-1 != float_price' class='price'>
+												<small>￥</small>{{float_price}}</strong>
+											<em class='number' v-else>2、5、8、0</em>
+										</p>
+									</div>
+									<a v-if='null != user' v-click='goodsinfo.m_toggle' :class="{'on' : goodsinfo.status}" class='ctrl button icon-roundright'></a>
+								</div>
+								<div v-if='10 == model.auctionState' class='flexbox centeralign'>
+									<div class='primary margin-right-far'>
+										<p>
+											价格:
+											<strong class='price'>
+												<small>￥</small>{{model.startPrice}}</strong>
+										</p>
+									</div>
+									<a v-if='null != user' v-click='goodsinfo.m_toggle' :class="{'on' : goodsinfo.status}" class='ctrl button icon-roundright'></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="video" style="width: 100%; height: 200px;z-index: 3;" v-if="titleType==6"></div>
+					<a v-click='m_clear_bubble' class='bubble button' v-if='bubble'>{{bubble}}</a>
+					<div class="chat" :class="{'on' : on}" :style="titleType==6?top200:''">
+						<sep-scroll v-touchstart='m_hide_media' :downpull_lock='true' :uppull_lock='true' name='chat_scroll'>
+							<div class="container">
+								<div class="wrap">
+									<!-- group(start) -->
+									<div class="group">
+										<!-- <span class="date">
+											<b>
+												2016年10月27日 下午8:29
+											</b>
+										</span> -->
+										<ul>
+											<li v-for='msg in msges'>
+												<div class="line friend" v-if='0 == msg.from'>
+													<div class="media border-radius-100per">
+														<img :src="msg.userPortrait" />
+													</div>
+													<div class="say">
+														<div class="content">
+															<span class='nickname' :class="{'red-text':msg.status==2}">{{msg.nickname}}</span>
+															<section v-click='{method : m_proc, args : msg}' :class="{full : 'redpackage' == msg.type}">
+																<p v-html='msg.msg'></p>
+																<b v-if='0 == msg.status'>
+																	<small class='loader black'></small>
+																</b>
+															</section>
+														</div>
+													</div>
+												</div>
+												<div class="line me" v-if='1 == msg.from'>
+													<div class="say">
+														<div class="content">
+															<span class='nickname'>{{msg.nickname}}</span>
+															<section>
+																<b v-if='0 == msg.status'>
+																	<small class='loader black'></small>
+																</b>
+																<p :class="{full : 'redpackage' == msg.type}" v-click='{method : m_proc, args : msg}' v-html='msg.msg'></p>
+															</section>
+														</div>
+													</div>
+													<div class="media border-radius-100per">
+														<img :src="msg.userPortrait" />
+													</div>
+												</div>
+											</li>
+
+										</ul>
+									</div>
+									<!-- group(end) -->
+								</div>
+							</div>
+						</sep-scroll>
+						<!-- 出价接口(end) -->
+						<div class="giftbg" v-click="m_show_gift" v-if="showGift"></div>
+						<div class='footer operation' v-if='null != user'>
+							<section :class="{'on' : 1 == flag}" class='outprice'>
+								<div class='t flexbox'>
+									<div class="l">
+										<a v-click="{method : m_change, args : 0}" class='button icon-keyboard'></a>
+									</div>
+									<div class="r primary flexbox">
+										<a class='button primary' v-click="{method : outprice.m_show, args : 1}">自由加价</a>
+										<a class='button primary' v-click="{method : outprice.m_show, args : 2}">委托出价</a>
+										<a class='button primary' v-click="{method : outprice.m_show, args : 3}">加一手</a>
+									</div>
+								</div>
+							</section>
+							<section :class="{'on' : 0 == flag}" class='input'>
+								<div class='t'>
+									<div class='edit'>
+										<div class='l' v-if="titleType==6">
+											<a v-click="m_show_order" class='create-order-show' :style="orderState">{{order_text}}</a>
+										</div>
+										<div class='l' v-else>
+											<a v-click="{method : m_change, args : 1}" class='button icon-paimaizhuanchang fg-red'></a>
+										</div>
+
+										<div class='c'>
+											<input @focus='m_input_focus' ref="msgInput" @input="m_msg_change" class='text' placeholder='聊天内容' type='text' />
+										</div>
+										<div class='r flexbox'>
+											<a class='button icon-expression primary' v-click='{method : m_show_media, args : 1}'></a>
+											<a class='button icon-add2 primary' v-click='{method : m_show_media, args : 2}'></a>
+											<a v-click='m_msg_send_text' class='msg-send' ref="msgSend">发送</a>
+										</div>
+
+									</div>
+								</div>
+								<div class='b'>
+
+								</div>
+							</section>
+						</div>
+					</div>
+					<!-- 出价接口(start) -->
+					<sep-outprice mode='scene' :id='model.collectionId' :screening_id='model.screeningId' :current_price='model.leaderName ? model.currentPrice :  model.startPrice'></sep-outprice>
+					<div class="gift-model" :class="{'ongift' : ongift}">
+						<div class="title">
+							<span>赠送礼物</span>
+						</div>
+						<div class="content">
+							<sep-swiper class="swiper-gift" name="gifts">
+								<div :index='i' class="swiper-slide" v-for="(item,i) in giftList">
+									<div class="filed" v-click="{method:m_chose_gift,args:{el:el,index:{pi:i,ci:index}}}" :class="{'chose-gift':el.onclick}"
+									 v-for="(el,index) in item">
+										<div class="giftimage" :style="el.style"></div>
+										<span>{{el.name}}</span>
+										<span style="color:#ffcc00;">{{el.price==0?'免费':'￥'+el.price.toFixed(2)}}</span>
+									</div>
+								</div>
+							</sep-swiper>
+						</div>
+						<div class="footer">
+							<span>余额：<span style="color:#ffcc00;">{{balance}}</span></span>
+							<a class='ctrl button recharge' push="user.money">充值</a>
+							<a class='ctrl button' :class="{'ongiver':ongiver,'disgiver':!ongiver}" v-click="m_show_giver">送礼</a>
+						</div>
+					</div>
+					<div class='panel' :class="{'on' : on}">
+						<!-- 表情(start) -->
+						<div class='expression' v-if='1 == type'>
+							<sep-scroll :downpull_lock='true'>
+								<ul>
+									<li v-for='el in emojis'>
+										<a class='button' v-click='{method : m_add_emoji_to_text, args : el}' v-html='el.emoji'></a>
+									</li>
+								</ul>
+							</sep-scroll>
+						</div>
+						<!-- 表情(end) -->
+						<div class='other' v-if='2 == type'>
+							<div class="modular counter-3">
+								<ul>
+									<li>
+										<div class="button">
+											<!-- <input type="file" v-model="imageFile"> -->
+											<form v-form='form' style="opacity: 0;">
+												<sep-file v-model='imageFile'></sep-file>
+											</form>
+											<i class="icon-imagefill fg-lightgreen">
+											</i>
+											<small>
+												发图片
+											</small>
+										</div>
+									</li>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</transition>
+		</section>
+
+		<sep-pop name="good" class="good-pop">
+			<div class="collection-detail">
+				<p style="text-align: right;padding: 0;">
+					<a class="close" v-click="good.m_hide"> &#10005</a>
+				</p>
+				<div class="image-mask" :style="{'height':mh+'px'}">
+					<img :src="collectionPic" class="goodsImage" :style="{'width': w+'px','height':h+'px'}">
+				</div>
+				<p class="collectionName">{{collectionName}}</p>
+				<p class="currentPrice">价格：
+					<span class="red-text">¥{{startPrice}}</span>
+				</p>
+				<div class="detail-mask">
+					<span>数量：
+						<span class="red-text">1</span>
+					</span>
+					<span>余量：
+						<span class="red-text">{{quantity}}</span>
+					</span>
+					<a class="goods-detail" v-click="m_push">详情</a>
+				</div>
+				<p style="text-align: center;margin-top: 20px;">
+					<a class="create-order" v-click="m_create_order">立即下单</a>
+				</p>
+			</div>
+		</sep-pop>
+		<div class="animation-gift" :class="{'onsg':showAnimatGift}">
+			<div class="animation-model">
+				<div class="item" :style="{'background-image':'url('+giftImage+')','background-repeat':'no-repeat','background-size':'100% 100%'}">
+					<div class="fg" :style="{left:fgl+'px',top:fgt+'px',width:fgw+'px',height:fgw+'px'}"></div>
+				</div>
+				<div class="bg">
+				</div>
+			</div>
+		</div>
+		<sep-pop name="order" class="order-pop">
+			<div class="order-pay">
+				<p>恭喜您下单成功</p>
+				<p>系统以实际付款订单为准，来确定是否抢购成功。藏品数量有限，抢完即止。</p>
+				<section>
+					<a v-click="order.m_hide">稍后支付</a>
+					<a v-click="immediate_payorder">立即付款</a>
+				</section>
+			</div>
+		</sep-pop>
+		<sep-pop name="giver" class="giver-pop">
+			<div class="giver-pay">
+				<p>送礼提示</p>
+				<p>您的余额为<span class="text-price">{{balance}}</span>元<br>
+					此件礼物价格为<span class="text-price">{{giverPrice}}</span>元<br>
+					确定送出此件礼物吗？</p>
+				<section>
+					<a v-click="giver.m_hide">关闭</a>
+					<a v-click="m_gift_pay">确定</a>
+				</section>
+			</div>
+		</sep-pop>
+		<sep-pop name='pay'>
+			<div class="layout">
+				<ul>
+					<li class="text-align-center padding-far">{{pay.params.info.title}}</li>
+					<li>
+						<!-- link(可链接) link-arrow(带箭头链接) -->
+						<div class="button item link">
+							<div class="media large">
+								<img :src='pay.params.info.image' />
+							</div>
+							<div class="content">
+								<div class="props">
+									<div class="prop">
+										<div class="l">
+											{{pay.params.info.name}}
+										</div>
+										<div class="r">
+										</div>
+									</div>
+									<div class="prop">
+										<div class="l">
+											成交价：
+											<span class='price fg-red'>
+												<small>￥</small>{{pay.params.info.price}}</span>
+										</div>
+										<div class="r">
+										</div>
+									</div>
+									<div class="prop">
+										<div class="l">
+											优惠价：
+											<span class='price fg-orange'>
+												<small>￥</small>{{pay.params.info.coupon}}</span>
+										</div>
+										<div class="r">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="other">
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class='flexbox'>
+							<a class='button default red primary fz-small' v-click='m_app_pay'>去付款</a>
+							<a class='button default withe primary fz-small' v-click='pay.m_hide'>稍后支付</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</sep-pop>
+	</div>
+</div>

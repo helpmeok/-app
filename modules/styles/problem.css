@@ -1,0 +1,21 @@
+.problem .layout > ul > li .item {
+	background-color: #f8f8f8;
+}
+.problem .layout > ul > li .item .media i {
+	font-size: 20px;
+}
+.problem .proitem .media {
+	width: 10px;
+	height: 10px;
+	display: inline-block;
+	/*background-color: #333;*/
+	/*border-radius: 25px;*/
+	margin-left: 10px;
+}
+.problem .proitem .media {
+	margin-left: 10px;
+    vertical-align: middle;
+}
+.problem .layout > ul > li .item .media {
+	margin-right:5px;
+}

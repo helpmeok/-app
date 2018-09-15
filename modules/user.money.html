@@ -1,0 +1,110 @@
+<div class="viewbox">
+    <div class="header">
+        <div class="wrap">
+            <div class="l">
+                <a back class="button">
+                    <i class="icon-back"></i>
+                </a>
+            </div>
+            <div class="c">
+                <em>{{title}}</em>
+            </div>
+            <div class="r">
+
+            </div>
+        </div>
+    </div>
+    <div class="mask">
+        <div class="content">
+
+        </div>
+    </div>
+    <div class='body'>
+        <sep-scroll :style="other.user ? {bottom : '50px'} : ''">
+            <sep-render>
+                <section slot="entity">
+                    <div class="box">
+                        <div class="top">
+                            <p>账户总额(元)</p>
+                            <p>{{$model.amount.allAmounts}}</p>
+                        </div>
+                        <div class="middle flexbox">
+                            <div class="block">
+                                <p>冻结余额(元)</p>
+                                <p>{{$model.amount.freezeAmount}}</p>
+                            </div>
+                            <div class="block">
+                                <p>可用余额(元)</p>
+                                <p>{{$model.amount.balance}}</p>
+                            </div>
+                        </div>
+                        <div class="layout">
+                            <ul>
+                                <li>
+                                    <!-- link(可链接) link-arrow(带箭头链接) -->
+                                    <div class="item">
+                                        <div class="container">
+                                            <p class="text-p">保证金(元)</p>
+                                            <div class="btn-box">
+                                                <button class="balance-in  balance-button" :class="{'disabled':disabled_in}"
+                                                    v-click="m_push_ensurePrice">余额转入</button>
+                                                <button class="balance-out balance-button" :class="{'disabled':disabled_out}"
+                                                    v-click="m_pull_ensurePrice">转入余额</button>
+                                                <p class="text">
+                                                    定额2000.00元
+                                                    <span class="m_text">¥{{ensurePrice}}</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <!-- link(可链接) link-arrow(带箭头链接) -->
+                                    <div class="button item link-arrow" push="user.money.detail">
+                                        <div class="content">
+                                            账户明细
+                                        </div>
+                                        <div class="other">
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </sep-render>
+            <section slot="bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+        <sep-pop name="charge" class="pop-charge">
+            <div class="container">
+                <p>
+                    请您转账到以下账户进行充值，或下载古美术APP支持银联、支付宝、微信充值，给您带来的不便请见谅。
+                </p>
+                <p class="red-text">
+                    户名：厦门古美术文化传播有限公司
+                </p>
+                <p class="red-text">
+                    开户行：光大厦门分行
+                </p>
+                <p class="red-text">
+                    卡号：37510188000722431
+                </p>
+                <p class="red-text">
+                    电话：13600927360
+                </p>
+                <p>
+                    付款后请及时告知您的专属艺术品经纪人，以便尽快帮您确认充值。
+                </p>
+            </div>
+        </sep-pop>
+        <div class="footer" v-if='null != other.user'>
+            <div class='flexbox'>
+                <a class='button fg-blue primary' push="user.withdrawals">提现</a>
+                <!-- <a class='button fg-blue primary' push="user.charge">充值</a> -->
+                <a class='button fg-blue primary' v-click="charge.m_show">充值</a>
+            </div>
+        </div>
+    </div>
+</div>

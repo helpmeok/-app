@@ -1,0 +1,143 @@
+
+<div class = "viewbox">
+	<div class = "header">
+		<div class = "wrap">
+			<div class = "l">
+				<a back class = "button"><i class = "icon-back"></i></a>
+			</div>
+			<div class = "c">
+				<em>{{title}}</em>
+			</div>
+			<div class = "r">
+			</div>
+		</div>
+	</div>
+	<div class = 'body'>
+		<div class="top" v-if="len">
+			<div class = 'wrap'>
+				<section class = 'date' v-if = '3 == status'>
+					<span class = 'text'>
+						<i class = 'icon-time  fz-large'></i> {{ 1 == flag ? '结束' : '开拍' }}倒计时
+					</span>
+					<b v-count-down = "{name : 'timers', sub : 1000, sleep : 1000, callback : m_check_timer}">
+						<section v-if = 'out_timers.dd'>
+							<em class = 'dd'>
+								{{out_timers.dd}}
+							</em>
+							<small>天</small>
+						</section>
+						<section v-if = 'out_timers.hh'>
+							<em class = 'hh'>
+								{{out_timers.hh}}
+							</em>
+							<small>小时</small>
+						</section>
+						<section v-if = 'out_timers.mm'>
+							<em class = 'mm'>
+								{{out_timers.mm}}
+							</em>
+							<small>分</small>
+						</section>
+						<section>
+							<em class = 'ss'>
+								{{out_timers.ss}}
+							</em>
+							<small>秒</small>
+						</section>
+					</b>
+				</section>
+				<section class = 'finish' v-if = '4 == status'>
+					已结束
+				</section>
+			</div>
+		</div>
+		<sep-scroll :style="style">
+			<sep-render :login = 'false'>
+				<section slot = 'entity'>
+					<div class="layout">
+					<!-- 虚拟列表(start) -->
+						<ul>
+							<li v-for="(el, index) in $model.list">
+								<div class="item topalign link button link-arrow" v-click = '{method : m_push, args : el}'>
+									<div class="border-radius-near media large">
+										<sep-image :src="el.image"></sep-image>
+									</div>
+									<div class="content">
+										<div class="props">
+											<div class="prop">
+												<div class="l">
+													<span class="doubleline">
+														{{el.name}}
+													</span>
+												</div>
+												<div class="r">
+													
+												</div>
+											</div>
+											<div class="prop margin-top-near">
+												<div class="l">
+													<div class = 'fz-medium fg-gray'>
+														<label class = 'year'>
+															年限 
+														</label>
+														{{el.year ? el.year : '--'}}
+													</div>
+												</div>
+												<div class="r">
+													
+												</div>
+											</div>
+											<div class="prop margin-top-near">
+												<div class="l">
+													<div class = 'fz-medium fg-gray'>
+														<label class = 'price'>
+															秒拍价 
+														</label>
+														<em v-if = 'el.startPrice'>
+															<b class = 'fg-red price'><small>￥</small>{{el.startPrice}}</b>
+														</em>
+														<em v-else>
+															--
+														</em>
+														
+													</div>
+												</div>
+												<div class="r">
+													
+													<a v-if = '2 == el.state' class = 'rob'>
+														抢
+													</a>
+													<div v-if = '3 == el.state' class = 'finish'>
+														
+													</div>
+													<div v-if = '4 == el.state' class = 'end'>
+														
+													</div>
+
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					<!-- 虚拟列表(end) -->
+					</div>
+				</section>
+			</sep-render>
+			<section slot = "bottom">
+				<sep-dev></sep-dev>
+			</section>
+		</sep-scroll>
+
+		
+		<div class = 'footer'>
+			<transition name = 'up'>
+				<a v-if = 's' v-click = 'm_share' class = 'share button'><i class = 'icon-share-dotfill'></i></a>
+			</transition>
+		</div>
+		
+
+	</div>
+</div>
+

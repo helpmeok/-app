@@ -1,0 +1,67 @@
+<div class="viewbox">
+    <div class="header">
+        <div class="wrap">
+            <div class="l">
+                <a back class="button"><i class = "icon-back"></i></a>
+            </div>
+            <div class="c">
+                <em>{{title}}</em>
+            </div>
+            <div class="r">
+            </div>
+        </div>
+    </div>
+    <div class = 'body'>
+        <sep-scroll>
+            <sep-render>
+                <section slot = 'empty'>
+                    <sep-empty icon = 'icon-favor' text = '没有银行卡'>去添加几个吧~</sep-empty>
+                </section>
+                <section slot='entity'>
+                    <div class="layout">
+                        <ul>
+                            <li v-for="el in $model.list">
+                                <!-- link(可链接) link-arrow(带箭头链接) -->
+                                <div class="item button">
+                                    <div class="media medium">
+                                        <img :src="el.bankIcon">
+                                    </div>
+                                    <div class="content">
+                                        <div class="props">
+                                            <div class="prop">
+                                                <div class="l">
+                                                    {{el.bankName}}
+                                                </div>
+                                                <div class="r">
+                                                    <a class='ev-stop button icon-delete fg-gray' v-click = "{method : m_unbind, args : el}"></a>
+                                                </div>
+                                            </div>
+                                            <div class="prop">
+                                                <div class="l number fz-medium fg-gray">
+                                                    尾号 {{el.tailNumber}}
+                                                </div>
+                                                <div class="r fz-medium fg-gray">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="other">
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </sep-render>
+
+            <div push='bank.edit' class="margin-far button default cool bankblue border-radius-far bankbut" v-if="null != other.user">
+                <span class="icon-roundadd fg-red"></span> 添加银行卡
+            </div>
+            
+            <section slot="bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+    </div>
+</div>

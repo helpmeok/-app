@@ -1,0 +1,154 @@
+<div class = "viewbox">
+	<div class = "header">
+		<div class = "wrap">
+			<div class = "l">
+				<a back class = "button"><i class = "icon-back"></i></a>
+			</div>
+			<div class = "c">
+				<em>{{title}}</em>
+			</div>
+			<div class = "r">
+
+			</div>
+		</div>
+	</div>
+	<div class = 'body'>
+		<sep-scroll :downpull_lock = 'true'>
+			<form v-form = 'form'>
+				<div class="layout">
+					<ul>
+						<li>
+							<div class="item field">
+								<div class="content">
+									<em class="name">
+										手机号
+									</em>
+									<div class="edit">
+										<input class = 'mobile' maxlength = '11' type="tel" placeholder="输入手机号" v-rules = '{tel : true, required : true}' data-tel-msg = '手机号格式无效' data-required-msg = '请输入手机号' v-model = "model.mobile">
+									</div>
+								</div>
+								<div class="other">
+									
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item field">
+								<div class="content">
+									<em class="name">
+										真实姓名
+									</em>
+									<div class="edit">
+										<input v-rules = '{required : true}' data-required-msg = '请输入真实姓名' maxlength = '20' type="text" placeholder="您的姓名" v-model = "model.name">
+									</div>
+								</div>
+								<div class="other">
+									
+								</div>
+							</div>
+						</li>
+						<!--<li>
+							<div class="item field">
+								<div class="content">
+									<em class="name">
+										身份证
+									</em>
+									<div class="edit">
+										<input v-rules = '{required : true, minlength : 18}' data-minlength-msg = '身份证号必须是18位' data-required-msg = '请输入身份证号' type="text" placeholder="18位身份证号码" v-model = "model.id" maxlength = '18'>
+									</div>
+								</div>
+								<div class="other">
+									
+								</div>
+							</div>
+						</li>-->
+						<li>
+							<div class="item field">
+								<div class="content">
+									<em class="name">
+										昵称
+									</em>
+									<div class="edit">
+										<input v-rules = '{required : true}' data-required-msg = '请输入昵称' type="text" placeholder="输入昵称" v-model = "model.nickname">
+									</div>
+								</div>
+								<div class="other">
+									
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item field">
+								<div class="content">
+									<em class="name">
+										密码
+									</em>
+									<div class="edit">
+										<input v-rules = '{required : true, minlength : 6}' type="password" placeholder="请输入密码" data-minlength-msg = '密码至少6位数' data-required-msg = '请输入密码'  v-model = "model.password">
+									</div>
+								</div>
+								<div class="other">
+									
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item field">
+								<div class="content">
+									<em class="name">
+										确认密码
+									</em>
+									<div class="edit">
+										<input v-rules = '{required : true, minlength : 6}' type="password" placeholder="请输入确认密码" data-minlength-msg = '确认密码至少6位数' data-required-msg = '请输入确认密码' v-model = "model.passwordConfirm">
+									</div>
+								</div>
+								<div class="other">
+									
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item field">
+								<div class="content">
+									<em class="name">
+										图片验证
+									</em>
+									<div class="edit">
+										<input class = 'imgcode' type="tel" placeholder="请输入计算结果" v-rules = '{required : true }' data-tel-msg = '计算结果错误' data-required-msg = '请输入计算结果' v-model = "model.randCode">
+									</div>
+								</div>
+								<div class="other">
+									<div class="but">
+										<img :src = 'src' alt="" v-click = 'm_img_code'/>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item field">
+								<div class="content">
+									<em class="name">
+										验证码
+									</em>
+									<div class="edit">
+										<input type="tel" v-rules = '{required : true, minlength : 6}' data-minlength-msg = '验证码至少6位数' placeholder="输入验证码" maxlength = '6' v-model = "model.smsCode" />
+									</div>
+								</div>
+								<div class="other">
+									<sep-button text = '获取验证码' :wtext = 'wtext'  class="red medium mini border-radius-far  req-code" v-click = "m_req_code"></sep-button>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</form>
+			<div class = 'padding-far'>
+				<sep-button v-click = 'form.m_submit' text = '完成' wtext = '注册中' class = 'red border-radius-far submit'></sep-button>
+			</div>
+			<section slot = "bottom">
+				<sep-dev></sep-dev>
+			</section>
+		</sep-scroll>
+	</div>
+</div>
+

@@ -1,0 +1,51 @@
+<div class="viewbox">
+    <div class="header">
+        <div class="wrap">
+            <div class="l">
+                <a back class="button">
+                    <i class="icon-back"></i>
+                </a>
+            </div>
+            <div class="c">
+                <em>{{title}}</em>
+            </div>
+            <div class="r">
+            </div>
+        </div>
+    </div>
+    <div class='body'>
+        <section>
+            <div class="crads_list">
+                <div class="list" :class="{'active':active}" @click="active=true">古美术公众号</div>
+                <div class="list" :class="{'active':!active}" @click="active=false">古玩知识分享</div>
+            </div>
+        </section>
+        <sep-scroll>
+            <div class="layout" v-if="active">
+                <div class="item" v-for="el in list_l" v-click="{method:m_push,args:el.content}">
+                    <div class="image">
+                        <sep-image :src="el.imageUrl" alt=""></sep-image>
+                    </div>
+                    <p>{{el.title}}</p>
+                </div>
+            </div>
+            <div class="layout" v-else>
+                <div class="item" v-for="el in list_r" v-click="{method:m_push,args:el.content}">
+                    <div class="image">
+                        <sep-image :src="el.imageUrl" alt=""></sep-image>
+                    </div>
+                    <p>{{el.title}}</p>
+                </div>
+            </div>
+            <div class='pager'>
+                <div class='wrap'>
+                    <a class='button' v-click='{method : m_topage, args : 1}'>
+                        <small class='loader black' v-if="isLoad"></small> {{loading}}
+                    </a>
+                </div>
+            </div>
+        </sep-scroll>
+
+        <sep-activity></sep-activity>
+    </div>
+</div>

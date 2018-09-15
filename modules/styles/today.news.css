@@ -1,0 +1,110 @@
+.today-news .crads_list {
+    width: 55%;
+    height: 30px;
+    margin-top: 10px;
+    display: flex;
+    border: 1px solid #e33;
+    border-radius: 5px;
+    margin-left: 22.5%;
+    margin-bottom: 10px;
+}
+
+.today-news .crads_list .list {
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    font-size: 14px;
+    line-height: 30px;
+    color: #e33;
+}
+
+.today-news .body .crads_list .active {
+    background-color: #e33;
+    color: white;
+}
+
+.today-news .scroll {
+    top: 50px;
+}
+
+.today-news .scroll .layout {
+    width: 94%;
+    margin-left: 3%;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+.today-news .scroll .layout .item {
+    display: flex;
+    width: 100%;
+}
+
+.today-news .scroll .layout .item:nth-of-type(1) {
+    width: 100%;
+    height: 150px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.today-news .scroll .layout .item:nth-of-type(1) .image {
+    width: 90% !important;
+    margin-left: 10% !important;
+    height: 100% !important;
+    margin: 0 !important;
+}
+
+.today-news .scroll .layout .item:nth-of-type(1) .image img {
+    width: 100% !important;
+}
+
+.today-news .scroll .layout .item:nth-of-type(1) p {
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(48, 44, 44, 0.815);
+    color: white;
+    width: 90%;
+    z-index: 88;
+    white-space: nowrap;
+    word-wrap: break-word;
+    word-break: break-all;
+    height: 25px;
+    padding: 0 10px;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 25px;
+    text-align: center;
+}
+
+.today-news .scroll .layout .item .image {
+    width: 70px !important;
+    height: 40px !important;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.today-news .scroll .layout .item .image img {
+    width: auto;
+}
+
+.today-news .scroll .layout .item:not(:nth-of-type(1)) p {
+    color: black;
+    font-size: 14px;
+    margin-top: 10px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0px 10px 0 0;
+    
+}
+

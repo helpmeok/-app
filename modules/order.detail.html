@@ -1,0 +1,201 @@
+<div class = "viewbox">
+	<div class = "header">
+		<div class = "wrap">
+			<div class = "l">
+				<a back class = "button"><i class = "icon-back"></i></a>
+			</div>
+			<div class = "c">
+				<em>{{title}}</em>
+			</div>
+			<div class = "r">
+
+			</div>
+		</div>
+	</div>
+	<div class = 'body'>
+		<sep-scroll>
+			<sep-render>
+				<div slot = 'entity'>
+					<div class="layout">
+						<ul>
+							<li>
+								<div class="fillitem">
+									<div class="top bg-brown">
+										<div class="l">
+											<span class="fg-gray fz-medium fg-white">
+												订单：{{$model.orderDetailVo.orderNo}}
+											</span>
+										</div>
+									</div>
+									<div class="item topalign link">
+										<div class="media large">
+											<img :src="$model.collectionVo.imgUrl">
+										</div>
+										<div class="content">
+											<div class="props">
+												<div class="prop">
+													<div class="l">
+														<span class="fz-medium doubleline">
+															{{$model.collectionVo.collectionName}}
+														</span>
+													</div>
+													<div class="r">
+
+													</div>
+												</div>	
+												<div class="prop">
+													<div class="l">
+														<span class="fz-large fg-red">
+														<small>￥</small>{{$model.orderDetailVo.bidPrice}}</span>
+													</div>
+													<div class="r">
+														
+													</div>
+												</div>							
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="layout margin-top-far">
+						<ul>
+							<li>
+								<!-- link(可链接) link-arrow(带箭头链接) -->
+								<div class="item topalign fz-small">
+									<div class="content">
+										<div class="props">
+											<div class="prop" v-if = 'null == $model.orderDetailVo.express'>
+												<div class="l">
+													配送方式：----
+												</div>
+												<div class="r">
+													
+												</div>
+											</div>
+											<div class="prop" v-else>
+												<div class="l">
+													配送方式：{{$model.orderDetailVo.express}}
+												</div>
+												<div class="r">
+													
+												</div>
+											</div>
+											<div class="prop" v-if = 'null == $model.orderDetailVo.expressNo'>
+												<div class="l">
+													快递单号：----
+												</div>
+												<div class="r">
+													
+												</div>
+											</div>
+											<div class="prop" v-else>
+												<div class="l">
+													快递单号：{{$model.orderDetailVo.expressNo}}
+												</div>
+												<div class="r">
+													
+												</div>
+											</div>
+											<div class="prop">
+												<div class="l">
+													创建日期：{{$model.orderDetailVo.createDate}}
+												</div>
+												<div class="r">
+													
+												</div>
+											</div>
+											<div class="prop">
+												<div class="l">
+													订单状态：{{$model.orderDetailVo.orderStateTypeStr}}
+												</div>
+												<div class="r">
+													
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="layout margin-top-far">
+						<ul>
+							<li>
+								<div class="fillitem">
+									<div class="item topalign link">
+										<div class="content fz-medium">
+											<div class="props">
+												<div class="prop">
+													<div class="l">
+														运费：
+													</div>
+													<div class="r">
+														<span class="fz-large fg-red">
+															<small>￥</small>{{$model.orderDetailVo.postage}}
+														</span>
+													</div>
+												</div>
+												<div class="prop">
+													<div class="l">
+														优惠金额：
+													</div>
+													<div class="r">
+														<span class="fz-large fg-red">
+															<small>￥</small>{{$model.orderDetailVo.priceDown}}
+														</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="bottom">
+										<div class="l">
+											应付金额：
+										</div>
+										<div class="r">
+											<span class="fz-large fg-red">
+												<small>￥</small>{{$model.orderDetailVo.charge}}
+											</span>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="layout margin-top-far">
+						<ul>
+							<li>
+								<!-- link(可链接) link-arrow(带箭头链接) -->
+								<div class="item">
+									<div class="content">
+										扣除保证金：
+									</div>
+									<div class="other">
+										<span class="fz-large fg-red">
+											<small>￥</small>{{$model.orderDetailVo.entrustAmounts}}
+											</span>
+										</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="button default cool red margin-far border-radius-far">
+						<a href="tel:4008386268">
+							<i class = 'icon-service fz-20px fg-red'></i>
+							<span class = 'margin-left-far fg-gray'>联系客服</span>
+						</a>
+					</div>
+				</div>
+			</sep-render>	
+			
+			<section slot = "bottom">
+				<sep-dev></sep-dev>
+			</section>
+
+		</sep-scroll>
+	</div>
+
+</div>
+

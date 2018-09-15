@@ -1,0 +1,7 @@
+.search .top {
+	position: relative;
+	z-index: 20;
+}
+.search .scroll {
+	margin-top: 44px;
+}

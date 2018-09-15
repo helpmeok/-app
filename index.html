@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8" />
+	<!--开启对web app的支持-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<!--开启对web app的支持-->
+	<link rel="icon" href="favicon.ico" type="image/x-icon" />
+	<link href="app.png" rel="apple-touch-icon" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<!--主要是正对苹果手机将数字自动识别为号码-->
+	<meta name="format-detection" content="telephone=no" />
+	<!-- 忽略识别邮箱，主要是针对安卓手机会自动将符合邮箱格式的字符串识别为邮箱地址-->
+	<meta content="email=no" name="format-detection" />
+	<meta name="HandheldFriendly" content="true">
+	<!-- 微软的老式浏览器 -->
+	<meta name="MobileOptimized" content="320">
+	<!-- uc强制竖屏 -->
+	<meta name="screen-orientation" content="portrait">
+	<!-- QQ强制竖屏 -->
+	<meta name="x5-orientation" content="portrait">
+	<!-- UC强制全屏 -->
+	<meta name="full-screen" content="yes">
+	<!-- QQ强制全屏 -->
+	<meta name="x5-fullscreen" content="true">
+	<!-- UC应用模式 -->
+	<meta name="browsermode" content="application">
+	<meta name="apple-mobile-web-app-title" content="古美术.H5" />
+	<!-- QQ应用模式 -->
+	<meta name="x5-page-mode" content="app">
+	<!-- windows phone 点击无高光 -->
+	<meta name="msapplication-tap-highlight" content="no">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<!-- <div style="margin:0 auto;overflow:hidden; width:0; height: 0; display: block;">
+		<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517907111&di=e6e260394b4a490e19afb7b4ad8e0dda&imgtype=jpg&er=1&src=http%3A%2F%2Fimg.taopic.com%2Fuploads%2Fallimg%2F120727%2F201995-120HG1030762.jpg"
+		    style="width:100%;height:100%;" />
+	</div> -->
+	<style type="text/css">
+		.initialization {
+			opacity: 0;
+		}
+
+		.index_mask {
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			background-color: rgba(0, 0, 0, 0.5);
+			z-index: 9990;
+			-webkit-transition: opacity .4s;
+			transition: opacity .4s;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			display: none;
+		}
+
+		.index_container {
+			width: 80%;
+			height: 80%;
+		}
+
+		.index_container_top {
+			width: 100%;
+			height: 90%;
+			background-color: #FFFFFF;
+			border-radius: 2%;
+		}
+
+		.index_container_bottom {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 10%;
+		}
+
+		.scroll_content {
+			width: 90%;
+			height: 60%;
+			margin: 0 auto;
+			overflow: hidden;
+			overflow: scroll;
+		}
+
+		.scroll_content img {
+			width: 100%;
+			margin-bottom: 10px;
+		}
+
+		.index_img_box {
+			border: 2px solid #FFFFFF;
+			border-radius: 50%;
+			width: 35px !important;
+			height: 35px !important;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.index_img_box img {
+			height: 12px;
+			width: 12px;
+		}
+
+		.btn_push {
+			color: #ffffff;
+			font-size: 16;
+			width: 40%;
+			height: 10%;
+			border-radius: 12px;
+			background-color: #d93c3c;
+			border: none;
+			margin-left: 30%;
+			outline: none;
+			position: absolute;
+			bottom: 15px;
+		}
+
+		.ticket_item {
+			background-image: url('modules/images/discount.coupon/red_Coupon_500_2.png');
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			display: flex;
+			height: 100px;
+		}
+
+		.fl {
+			width: 66%;
+			position: relative;
+			left: 0;
+			top: 0;
+		}
+
+		.fr {
+			width: 34%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+		}
+
+		p {
+			color: white;
+		}
+
+		.fl p {
+			text-indent: 10px;
+		}
+
+		.text_remark {
+			font-size: 15px;
+			font-weight: bold;
+		}
+
+		.fl div {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
+
+		.text_data {
+			font-size: 10px !important;
+			word-break: break-all !important;
+		}
+
+		.text_hd {
+			font-size: 10px !important;
+		}
+
+		.ticket_item {
+			margin-bottom: 15px;
+		}
+
+
+		@media only screen and (min-width: 370px) {
+			.text_remark {
+				margin-top: 10px;
+			}
+			.fl div {
+				position: absolute;
+				bottom: 15px;
+				left: 0;
+			}
+		}
+
+		@media only screen and (min-width: 767px) {
+			.home .list li .media {
+				height: 500px !important;
+			}
+			.home .swiper .swiper-wrapper .swiper-slide,
+			.render,
+			.entity,
+			.entity section,
+				{
+				height: 400px !important;
+			}
+		}
+
+		.loding_mask {
+			position: absolute;
+			background: url('modules/images/indeLoad/loadbg.png');
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			width: 100%;
+			height: 100%;
+			left: 0;
+			top: 0;
+		}
+
+		.loding_mask img {
+			margin: 0;
+			padding: 0;
+			pointer-events: none;
+		}
+
+		.loding_mask .loading {
+			width: 30px;
+			height: 30px;
+			animation: spin 1s infinite linear;
+			-moz-animation: spin 1s infinite linear;
+			-o-animation: spin 1s infinite linear;
+			-webkit-animation: spin 1s infinite linear;
+		}
+
+		@keyframes spin {
+			0% {
+				transform: rotate(0);
+				-moz-transform: rotate(0);
+				-o-transform: rotate(0);
+				-webkit-transform: rotate(0);
+			}
+			100% {
+				transform: rotate(360deg);
+				-moz-transform: rotate(360deg);
+				-o-transform: rotate(360deg);
+				-webkit-transform: rotate(360deg);
+			}
+		}
+
+		/* < !-- 解决滑动警告 --> */
+
+		* {
+			touch-action: pan-y;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- 初始化加载中转圈圈 -->
+	<!-- <div class="initialization on"> 
+		<div class="loader"></div>
+	</div> -->
+	<!-- 初始化加载 -->
+	<div class="loding_mask">
+		<div style="float:right;margin: 20px;">
+			<span style="margin-left: 10px;color: #e33;">正在加载</span>
+			<img src="modules/images/indeLoad/loading.png" alt="" class="loading">
+		</div>
+	</div>
+	<div class="sepui" style='display:none;'>
+		<div class='global'>
+			<!-- <sep-redpackage></sep-redpackage> -->
+			<!-- <sep-quickreg></sep-quickreg> -->
+			<sep-gesture></sep-gesture>
+			<sep-share></sep-share>
+			<sep-weixin-share></sep-weixin-share>
+		</div>
+		<!-- 框架页  -->
+		<!-- 导航条代码(start) -->
+		<div class="nav shadow-near footer">
+			<ul>
+				<li v-for="nav in navs">
+					<div v-if="!nav.url" :redirect="nav.name" class="button prevent">
+						<input type="radio" v-model="current" name="nav" :value="nav.name">
+						<i :class="nav.icon"></i>
+						<small>{{nav.text}}</small>
+					</div>
+					<a v-if="nav.url" :href="nav.name" class="button prevent">
+						<input type="radio" v-model="current" name="nav" :value="nav.name">
+						<i :class="nav.icon"></i>
+						<small>{{nav.text}}</small>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!--优惠券弹出框-->
+		<!-- <div class="index_mask">
+			<div class="index_container">
+				<div class="index_container_top" style="position: relative;left: 0;top: 0;">
+					<p style="color: #e94a58;font-size: 17px;text-align: center;padding: 20px 0px 0px 0px;font-weight: bold;">为回馈广大新老客户</p>
+					<p style="text-align: center;color: #4d4d4d;font-size: 14px;padding: 10px 15%;">古美术为每位会员发放优惠券啦!价值
+						<span class="totalMoney"></span>元!</p>
+					<div class="scroll_content">
+
+					</div>
+					<button class="btn_push">查看详情</button>
+				</div>
+				<div class="index_container_bottom">
+					<div class="index_img_box">
+						<img src="/gms.app/modules/images/discount.coupon/button_ext.png" alt="" />
+					</div>
+				</div>
+			</div>
+		</div> -->
+		<!-- 导航条代码(end) -->
+	</div>
+</body>
+<!-- <script src="./dist/bundle.js"></script> -->
+<script type="text/javascript">
+	/*
+			添加百度统计
+		*/
+	+
+	(function () {
+		var _url = './guide.js?v=' + Date.now();
+		var _e = document.createElement('script');
+		_e.src = _url;
+		document.body.appendChild(_e);
+	})(); +
+	(function () {
+		var _hmt = _hmt || [];
+		var hm = document.createElement("script");
+		hm.src = "https://hm.baidu.com/hm.js?6ded32b8cc5abcd7631c2b3728778507";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+
+</html>

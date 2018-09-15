@@ -1,0 +1,86 @@
+<div class="viewbox">
+	<div class="header">
+		<div class="wrap">
+			<div class="l">
+				<a back class="button">
+					<i class="icon-close"></i>
+				</a>
+			</div>
+			<div class="c">
+				<em>{{title}}</em>
+			</div>
+			<div class="r">
+				<a push='user.reg' class="button">还没账号?</a>
+			</div>
+		</div>
+	</div>
+	<div class='body'>
+		<sep-scroll :downpull_lock='true'>
+			<form v-form='form'>
+				<div class='logo' v-if='flag'>
+					<div class='bg'>
+					</div>
+				</div>
+				<div class="layout">
+					<ul>
+						<li>
+							<div class="item field">
+								<div class="content">
+									<div class="edit">
+										<input type="tel" placeholder="手机号" v-rules='{required : true, minlength : 11}' data-minlength-msg='手机格式不正确' data-required-msg='请输入手机号码'
+										    maxlength='11' v-model='model.mobile'>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item field">
+								<div class="content">
+									<div class="edit">
+										<input type="password" placeholder="密码" v-rules='{required : true, minlength : 6}' data-minlength-msg='密码至少6位数' data-required-msg='请输入密码'
+										    v-model='model.password'>
+									</div>
+								</div>
+								<div class="other">
+
+								</div>
+							</div>
+						</li>
+						<li>
+							<!-- link(可链接) link-arrow(带箭头链接) -->
+							<div class="item">
+								<div class="content">
+									<small class='fg-gray'>记住账号</small>
+									<span class="switch small button">
+										<input v-model='remember' value='1' type="checkbox" name="switch">
+										<i></i>
+									</span>
+								</div>
+								<div class="other" v-click='m_findpwd'>
+									<small class='fg-gray'>忘记密码</small>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class='padding-far flexbox'>
+					<sep-button v-click='form.m_submit' text='登陆' wtext='登陆中...' class='default primary red border-radius-near submit'></sep-button>
+					<!-- <a push = 'user.reg' class = 'default red border-radius-near button primary cool margin-left-far'>注册</a>	 -->
+					<a v-click="m_push_regist" class='default red border-radius-near button primary cool margin-left-far'>注册</a>
+					<!-- <a onclick="location.href='http://192.168.1.124/gms.app/regist/regist.html'" class = 'default red border-radius-near button primary cool margin-left-far'>注册</a>	 -->
+				</div>
+			</form>
+			<section slot="bottom" style="display: none;">
+				<div class='otherlogin'>
+					<em>其他方式登陆</em>
+					<div class='flexbox'>
+						<div class='primary item'>
+							<a v-click='m_weixin_login' class='weixin icon-weixinfill button'></a>
+							<p>微信</p>
+						</div>
+					</div>
+				</div>
+			</section>
+		</sep-scroll>
+	</div>
+</div>

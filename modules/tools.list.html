@@ -1,0 +1,62 @@
+<div class = "viewbox">
+	<div class = "header">
+		<div class = "wrap">
+			<div class = "l">
+				<a back = '$root' class = "button"><i class = "icon-back"></i></a>
+			</div>
+			<div class = "c">
+				<em>{{title}}</em>
+			</div>
+			<div class = "r">
+
+			</div>
+		</div>
+	</div>
+
+
+	<div class="body">
+		<sep-scroll>
+			<div class="layout">
+				<ul>
+					<li class = 'margin-near' v-for = '(el, index) in list'>
+						<!-- link(可链接) link-arrow(带箭头链接) -->
+						<div class="item link-arrow button" :push = "'tools.detail?id=' + el.id">
+							<div class="media small">
+								<i class = 'icon-copy fg-gray'></i>
+							</div>
+							<div class="content">
+								<div class="props">
+									<div class="prop">
+										<div class="l fz-medium">
+											{{index + 1}}、 {{el.text}}
+										</div>
+										<div class="r">
+										</div>
+									</div>
+									<div class="prop">
+										<div class="l number">
+											
+										</div>
+										<div class="r">
+											
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="other">
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<section slot = "bottom">
+				<sep-dev></sep-dev>
+			</section>
+
+		</sep-scroll>
+	</div>
+	
+	
+
+</div>
+

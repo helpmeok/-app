@@ -1,0 +1,232 @@
+<div class="viewbox">
+	<div class="header">
+		<div class="wrap">
+			<div class="l">
+			</div>
+			<div class="c">
+				<em>{{title}}</em>
+			</div>
+			<div class="r">
+				<a class='button' push="search">
+					<i class='icon-search'></i>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class='body'>
+		<!-- <div class="tab red ev-prevent">
+			<div class="wrap">
+				<div class="button">
+					<input type="radio" name="home-type-radio" v-model='show_type' value="1">
+					<div class="item">
+						<small>
+							今日热拍({{$model.list.length}})
+						</small>
+					</div>
+				</div>
+				<div class="button">
+					<input type="radio" name="home-type-radio" v-model='show_type' value="2">
+					<div class="item">
+						<small>
+							预展列表
+						</small>
+					</div>
+				</div>
+			</div>
+		</div> -->
+		<section class='area today' v-visible="1 == show_type">
+			<sep-scroll name='today_scroll'>
+				<sep-render name='ad' :login='false'>
+					<section slot='entity'>
+						<sep-swiper v-click='m_push_new_show' class='swiper' height='200px' :autoplay="3000" :loop="true" :pagination="true">
+							<div :index='index' v-for='(el, index) in renders.ad.model.list' class="swiper-slide">
+								<img :src="el.imgUrl" />
+							</div>
+						</sep-swiper>
+					</section>
+				</sep-render>
+				<div class="modules">
+					<section push='more.list'>
+						<p style="color: #333333;" class="module_title">直播专场</p>
+						<p style="color: #999999;font-size: 12px;">精品回流，趣味无穷</p>
+						<div class="module_img"></div>
+					</section>
+					<section v-click="{method: m_push_url, args : 'user.middl.man'}">
+						<p style="color: #6a4432;" class="module_title"> 我的专属经纪人</p>
+						<div class="module_img"></div>
+					</section>
+					<section v-click="m_push_life">
+						<p style="color: #ac9d47;" class="module_title">生活服务</p>
+						<p style="color: #999999;font-size: 12px;">生活缴费</p>
+						<p style="color: #999999;font-size: 12px;">古美术·光大金融贷</p>
+						<div class="module_img"></div>
+					</section>
+					<section push="today.news">
+						<p style="color: #082053;" class="module_title">头条资讯</p>
+						<div class="module_img"></div>
+					</section>
+				</div>
+				<!-- list(start) -->
+				<sep-render :login='false'>
+					<section slot='entity'>
+						<div class='list' :class='today_show_type'>
+							<div class='wrap'>
+								<div class='groups'>
+									<div class='group'>
+										<div class='dates-tab'>
+											<span v-for="(el,index) in dates" class="item-dates" :class="{'onitem':el.onclick}" v-click='{method : m_load_list, args : {el:el,index:index}}'>{{el.screenDateDes}}</span>
+										</div>
+										<div class='lists' v-for="item in dates" v-show="item.screenDate==startTime">
+											<span v-for="(el,index) in item.screenNoList" class="item-lists" :class="{'onitem':el.onclick}" v-click='{method : m_load_list_item, args : {el:el,index:index}}'>{{el.count}}</span>
+										</div>
+										<ul>
+											<li v-for='(el, index) in $model.list'>
+												<div class='button' v-click='{method : m_push, args : el}'>
+													<div class="live_icon" v-if="el.titleType==6"></div>
+													<div class='media'>
+														<sep-image :only='true' :src='el.pictureUrl'></sep-image>
+														<div class='mask'>
+															<span class='theme'>{{el.screenTheme}}</span>
+															<span class='type'>{{el.screenType}}</span>
+														</div>
+													</div>
+													<div class='detail flexbox'>
+														<div class='l primary'>
+															<em class='singleline'>{{el.screeningName}}</em>
+															<div class="flag" :class="{'ready' : 1 == el.screeningState, 'start' :  6 == el.screeningState||2 == el.screeningState, 'end' : 3 == el.screeningState}">
+																<p v-if='1 == el.screeningState'>
+																	预展中
+																</p>
+																<p v-if='2 == el.screeningState'>
+																	竞拍中
+																</p>
+																<p v-if='3 == el.screeningState'>
+																	已结束
+																</p>
+																<p v-if='6 == el.screeningState'>
+																	直播中
+																</p>
+																<p>
+																	{{el.onLookersNum}}
+																</p>
+																<p>
+																	人围观
+																</p>
+															</div>
+															<p class='date'>
+																{{el.startTime | date('MM月dd日 hh:mm 开拍')}}
+															</p>
+														</div>
+														<div class='r'>
+
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+				</sep-render>
+				<!-- list(end) -->
+				<section slot="bottom">
+					<sep-dev></sep-dev>
+				</section>
+			</sep-scroll>
+		</section>
+		<section class='area preview' :class='preview_show_type' v-visible="2 == show_type">
+			<div class='loading' v-if='null == current_list'>
+				<small class='loader black'></small> 加载中..
+			</div>
+			<div class="tab red dates ev-prevent" v-if='dates.length'>
+				<div class="wrap">
+					<div class="button" v-for='el in dates' v-click='{method : m_load_list, args : el.screenDate}'>
+						<input type="radio" name="home-date-radio" :value='el.screenDate' v-model='date_tab_value'>
+						<div class="item">
+							<small v-if='el.activity'>
+								<img :src='el.activity.iconSpot' width='25px' height='25px' />
+							</small>
+							<small v-else>
+								{{el.screenDate| date('dd日')}}
+							</small>
+						</div>
+					</div>
+					<div class="button" v-click='m_push_list_mores' v-if='dates.length'>
+						<input type="radio" name="home-date-radio" value='-1' v-model='date_tab_value'>
+						<div class="item">
+							<small>
+								更多
+							</small>
+						</div>
+					</div>
+				</div>
+			</div>
+			<sep-scroll name='preview_scroll' :ondownpull='m_refresh_preview'>
+				<!-- 预展列表 - 开始 -->
+				<div class='list' v-if='null != current_list && current_list.length'>
+					<div class='wrap'>
+						<div class='groups'>
+							<div class='group'>
+								<ul>
+									<li v-for='el in current_list'>
+										<div class='button' v-click='{method : m_push, args : el}'>
+											<div class='media'>
+												<sep-image :only='true' :src='el.pictureUrl'></sep-image>
+												<div class='mask'>
+													<span class='theme'>{{el.screenTheme}}</span>
+													<span class='type'>{{el.screenType}}</span>
+												</div>
+											</div>
+											<div class='detail flexbox'>
+												<div class='l primary'>
+													<em class='doubleline'>{{el.screeningName}}</em>
+													<div class="flag" :class="{'ready' : 1 == el.screeningState, 'start' : 6 == el.screeningState||2 == el.screeningState, 'end' : 3 == el.screeningState}">
+														<p v-if='1 == el.screeningState'>
+															预展中
+														</p>
+														<p v-if='2 == el.screeningState'>
+															竞拍中
+														</p>
+														<p v-if='6 == el.screeningState'>
+															直播中
+														</p>
+														<p v-if='3 == el.screeningState'>
+															已结束
+														</p>
+														<p>
+															{{el.onLookersNum}}
+														</p>
+														<p>
+															人围观
+														</p>
+													</div>
+													<p class='date'>
+														{{el.startTime | date('MM月dd日 hh:mm 开拍')}}
+													</p>
+												</div>
+												<div class='r'>
+
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<sep-empty v-if='current_list && 0 == current_list.length' text='暂无预展列表'>
+					过段时间再来吧~
+				</sep-empty>
+				<!-- 预展列表 - 结束 -->
+				<section slot="bottom">
+					<sep-dev></sep-dev>
+				</section>
+			</sep-scroll>
+		</section>
+		<sep-download-app></sep-download-app>
+		<sep-activity></sep-activity>
+	</div>
+</div>

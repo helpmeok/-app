@@ -1,0 +1,41 @@
+.check-member .body {
+    background: url('../images/millionsbg.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.check-member .body .form {
+    width: 80%;
+}
+
+.check-member .body .padding-far {
+    padding: 0;
+}
+
+.check-member .body .submit {
+    background-color: #FEB562;
+    border-radius: 22px;
+    color: white;
+}
+
+.check-member .body .form .list {
+    border-radius: 30px;
+    border: 1px solid #FEB562;
+    margin-bottom: 30px;
+    background: none;
+}
+
+.check-member .body .form ul::before,
+.check-member .body .form .list .item::before {
+    display: none;
+}
+
+.check-member .body .form .field .input,
+.check-member .body .form .field .input::placeholder {
+    color: #FEB562;
+    text-indent: 1em;
+}

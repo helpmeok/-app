@@ -1,0 +1,62 @@
+<div class="viewbox">
+    <div class="header">
+        <div class="wrap">
+            <div class="l">
+                <a back class="button">
+                    <i class="icon-back"></i>
+                </a>
+            </div>
+            <div class="c">
+                <em>{{title}}</em>
+            </div>
+            <div class="r">
+
+            </div>
+        </div>
+    </div>
+    <div class='body'>
+        <sep-scroll>
+            <sep-render>
+                <section slot='empty'>
+                    <sep-empty icon='icon-favor' text='您目前还没有出过价'>快去出价吧~</sep-empty>
+                </section>
+                <section slot="entity">
+                    <div class="layout">
+                        <ul>
+                            <li v-for="(el,i) in $model.list">
+                                <p class="bitDate">{{el.bitDate}}</p>
+                                <div class="item" v-for="item in el.bidCollectionVos">
+                                    <div class="item_top">
+                                        <div class="readed" v-if="!readArr[i]&&item.unreadCnt!=0">
+                                            {{item.unreadCnt}}
+                                        </div>
+                                        <img :src="item.getColectionPicUrl" alt="" class="goodsImage" v-click="{method:m_push,args:item}">
+                                        <div class="goodsTitle" v-click="{method:m_push,args:item}">{{item.colectionName.length>=45?item.colectionName.slice(0,45)+'...':item.colectionName}}</div>
+                                        <div class="icon_box" v-click="{method:m_spread_price,args:{item:item,i:i}}" :class="{'active':item.isSpread,'normal':!item.isSpread}">
+                                        </div>
+                                    </div>
+                                    <div class="item_bottom" v-if="item.isSpread">
+                                        <div v-for="item1 in item.exUsrBidDetialVos" class="price_item1">
+                                            <span>{{item1.exceedUsrName.length>=9?item1.exceedUsrName.slice(0,9)+'...':item1.exceedUsrName}}</span>
+                                            <span>{{item1.bitTiem.split(' ')[1]}}</span>
+                                            <span>{{item1.bitPrice}}</span>
+                                        </div>
+                                        <p style="text-align: right;color: grey;margin: 10px 0;" v-click="{method:m_more_price,args:item}" v-if="item.isMorePrice">更多出价</p>
+                                        <div class="price_item2">
+                                            <span>起拍价：{{item.startPrice}}</span>
+                                            <span>加价幅度：{{item.floatPrice}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </sep-render>
+            <section slot="bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+    </div>
+</div>

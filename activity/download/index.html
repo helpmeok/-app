@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <!--开启对web app的支持-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!--开启对web app的支持-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link href="app.png" rel="apple-touch-icon" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!--主要是正对苹果手机将数字自动识别为号码-->
+    <meta name="format-detection" content="telephone=no" />
+    <!-- 忽略识别邮箱，主要是针对安卓手机会自动将符合邮箱格式的字符串识别为邮箱地址-->
+    <meta content="email=no" name="format-detection" />
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <meta name="apple-mobile-web-app-title" content="古美术.H5" />
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <style type="text/css">
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+
+        body {
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background: url('./canvas_back.png')
+        }
+
+        .logo {
+            width: 70%;
+            margin-left: 15%;
+            margin-top: 50px;
+        }
+
+        main {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 80%;
+            height: 500px;
+            margin-left: 10%;
+        }
+
+        main div {
+            width: 300px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        main img {
+            width: 200px;
+            height: 200px;
+        }
+        p{
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="http://pmo577e26.pic29.websiteonline.cn/upload/hk0l.jpg" alt="" class="logo">
+    <main>
+        <div>
+            <img src="./gms-app.png" alt="">
+            <p>扫码下载古美术拍卖APP</p>
+        </div>
+        <div>
+            <img src="./gms-shop1.png" alt="">
+            <p>扫码下载古美术商城APP</p>
+        </div>
+    </main>
+</body>
+<script type="text/javascript">
+</script>
+
+</html>

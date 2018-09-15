@@ -1,0 +1,22 @@
+.about .top {
+	position: relative;
+}
+
+.about .top .splash {
+	overflow:hidden;
+	position: relative;
+}
+
+.about .scroll.on {
+	top: 282px;
+}
+
+.about .viewbox > .body > .scroll{
+	margin-top: 155px;
+}
+.sepui.weixin .about .viewbox .body {
+	top: 0 ;
+}
+.about p{
+	color: grey;
+}

@@ -1,0 +1,60 @@
+<div class = "viewbox">
+	<div class = "header">
+		<div class = "wrap">
+			<div class = "l">
+				<a back class = "button"><i class = "icon-back"></i></a>
+			</div>
+			<div class = "c">
+				<em>{{title}}</em>
+			</div>
+			<div class = "r">
+				
+			</div>
+		</div>
+	</div>
+	<div class = 'body'>
+		<sep-actionsheet>
+			<form v-form = 'form'>
+				<div class = 'settings'>
+					<em>
+						请输入购买数量
+					</em>
+					<div class = 'edit'>
+						<input v-rules = '{required : true, min : 1, max : 999}' data-required-msg = '请输入购买数量' data-min-msg = '至少购买 1 件哦~' v-model = 'form.model.number' data-max-msg = '最多购买 999 件哦' placeholder = '点我输入' type = 'tel' maxlength = '6' />
+					</div>
+					<sep-button :text = "'提交订单 ￥' + total" class = 'submit' wtext = '正在提交..' :loading = 'false' v-click = 'form.m_submit'></sep-button>
+				</div>
+			</form>
+		</sep-actionsheet>
+
+		<div class = 'close button icon-close' back></div>
+		<transition name="fade">
+			<div class = 'wait' v-if = '0 == status'>
+				<div class="stick"></div>
+				<div class="stick"></div>
+				<div class="stick"></div>
+				<div class="stick"></div>
+				<div class="stick"></div>
+				<div class="stick"></div>
+				<p>精彩内容，即将呈现...</p>
+			</div>
+		</transition>
+		<sep-scroll>
+			<div class = 'info'>
+				<div class = 'wrap'>
+					<transition name="fade">
+						<sep-image :onload = 'm_load' v-show = 'status' :src = 'src'></sep-image>
+					</transition>
+				</div>
+			</div>
+		</sep-scroll>
+	</div>
+	<div class = 'footer'>
+
+		<div class = 'buy' v-if = 'status'>
+			<a class = 'button continue' v-click = 'm_buy'>我要购买</a>
+			<a v-click = 'm_share' class = 'share button'><i class = 'icon-share-dotfill'></i></a>
+		</div>
+	</div>
+</div>
+

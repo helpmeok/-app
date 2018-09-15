@@ -1,0 +1,369 @@
+<div class="viewbox">
+	<div class="header">
+		<div class="wrap">
+			<div class="l">
+				<a back class="button">
+					<i class="icon-back"></i>
+				</a>
+			</div>
+			<div class="c">
+				<em>{{title}}</em>
+			</div>
+			<div class="r">
+				<a href="tel:400-838-6268">
+					<i class="button icon-mobilefill"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class='body'>
+		<div class="paymask" v-if="ispay" v-click="m_show">
+			<div class="payview">
+				<p>可用余额（元）：{{balance.toFixed(2)}}</p>
+				<p style="border-bottom: 0;">
+					余额支付密码 ：
+					<input type="password" v-model="amountPass" placeholder="请输入支付密码">
+				</p>
+				<p>
+					<button class="balance_pay">确认</button>
+				</p>
+				<p style="border-bottom: 0;display: none;">
+					其他支付方式：
+				</p>
+				<p style="border-bottom: 0;display: none;" class="wx_pay">
+					<i class="wxpay wx_pay"></i>
+					使用微信支付
+				</p>
+			</div>
+		</div>
+		<sep-scroll :style="1 == status ? {bottom : '0px'} : null">
+			<sep-render>
+				<div slot="entity">
+					<div class='tip flexbox' v-if='tip_status'>
+						<div class='l primary'>
+							<i class='icon-creative'></i>邮费以实际发货费用为准，多出将返回账户余额
+						</div>
+						<div class='r'>
+							<a class='button icon-roundclose close fg-gray' v-click='m_close_tip'></a>
+						</div>
+					</div>
+					<section v-if='tab_index == 1'>
+						<div class="layout" v-if='address'>
+							<ul>
+								<li>
+									<div class="item link button link-arrow" push="address.choose">
+										<div class='media'>
+											<i class='icon-locationfill' :class='base_fg'></i>
+										</div>
+										<div class="content">
+											<div class="props">
+												<div class="prop">
+													<div class="l">
+														<span>{{address.addressee}}
+															<b>({{address.mobile}})</b>
+														</span>
+													</div>
+													<div class="r">
+														<span>
+
+														</span>
+													</div>
+												</div>
+												<div class="prop">
+													<div class="l">
+														<span class="fg-gray fz-small">
+															{{address.addressDetail}}
+														</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="layout" v-else>
+							<ul>
+								<li>
+									<!-- link(可链接) link-arrow(带箭头链接) -->
+									<div class="item link button link-arrow" push="address.choose">
+										<div class='media'>
+											<i class='icon-locationfill' :class='base_fg'></i>
+										</div>
+										<div class="content">
+											<div class="props">
+												<div class="prop">
+													<div class="l">
+														请选择收货地址
+													</div>
+													<div class="r">
+														<span>
+
+														</span>
+													</div>
+												</div>
+												<div class="prop">
+													<div class="l">
+
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="layout" style="margin-top: 10px;" v-if="postpone">
+							<ul>
+								<li>
+									<!-- link(可链接) link-arrow(带箭头链接) -->
+									<div class="button item">
+										<div class="content">
+											<span class="fz-medium fg-gray number">过期时间: {{outConfirmTime}}</span>
+										</div>
+										<div class="other" style="opacity: 0;">
+											<div class="button default cool red small border-radius-near">
+												申请延期
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</section>
+					<section v-if='0 == tab_index'>
+						<div class="layout">
+							<ul>
+								<li>
+									<!-- link(可链接) link-arrow(带箭头链接) -->
+									<div class="item link">
+										<div class='media'>
+											<i class='icon-locationfill' :class='base_fg'></i>
+										</div>
+										<div class="content">
+											<div class="props">
+												<div class="prop">
+													<div class="l">
+														编辑收货地址
+													</div>
+													<div class="r">
+														<span>
+
+														</span>
+													</div>
+												</div>
+												<div class="prop">
+													<div class="l">
+
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</section>
+					<div class="layout margin-top-far">
+						<ul>
+							<li :push="'goods.detail?id='+el.collectionId" v-for="el in $model.orderVos" style="margin-bottom: 10px;">
+								<div class="fillitem button">
+									<!-- <div class="top">
+										<div class="l">
+											<span class="fg-gray fz-small">
+												订单：{{$model.orderNo}}
+											</span>
+										</div>
+									</div> -->
+									<div class="item topalign link">
+										<div class="media large">
+											<img :src="el.imgUrl">
+										</div>
+										<div class="content">
+											<div class="props">
+												<div class="prop">
+													<div class="l">
+														<span class="fz-medium doubleline">
+															{{el.collectionName}}
+														</span>
+													</div>
+													<div class="r">
+
+													</div>
+												</div>
+												<div class="prop">
+													<div class="l">
+														<!-- <span class="fz-large fg-red">
+															￥{{el.charge}}</span> -->
+													</div>
+													<div class="r">
+														<span class="fz-large fg-red">
+															<span>￥{{el.bidPrice}}</span>
+														</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="filed">
+										<div class="price-item" v-if="el.isPriceDown">
+											<div>
+												<span class="preferential">优惠</span>
+												<small>￥</small>{{el.priceDown}}
+											</div>
+											<div>
+												￥{{el.downPrice.toFixed(2)}}
+											</div>
+										</div>
+										<div class="price-item" v-if="el.isActivity">
+											<div>
+												<img :src="el.activityPicUrl" class="activityPicUrl">
+											</div>
+											<div>
+												￥{{el.activityPrice}}
+											</div>
+										</div>
+										<div class="price-item" v-if="el.isDiscount">
+											<div>
+												<span class="discount">折扣</span>
+											</div>
+											<div>
+												￥{{el.charge}}
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="layout margin-top-15px">
+						<ul>
+
+							<!-- <li>
+								<div class="button item">
+
+									<div class="content">
+										优惠金额
+									</div>
+									<div class="other">
+										<span class="price fg-red fz-medium">
+
+											<small>￥</small>{{priceDown.toFixed(2)}}
+										</span>
+									</div>
+								</div>
+							</li> -->
+							<li style="margin-top: 5px;">
+								<!-- link(可链接) link-arrow(带箭头链接) -->
+								<div class="button item">
+									<div class="content">
+										优惠券使用
+									</div>
+
+								</div>
+							</li>
+							<li v-for="(el,index) in tickets" class="tickets">
+								<span style="margin-left: 15px;color: #867a1d;">¥{{el.money}}&#X3000;{{el.remark}}</span>
+								<sep-checkboxs style="float: right;">
+									<div class="checkboxs button">
+										<input type="checkbox" v-model='el.checked' :value="el.id+','+el.money" name="ticket">
+										<i v-click="{method:m_get_ticket,args:{checked:el.checked,index:index}}">
+										</i>
+									</div>
+								</sep-checkboxs>
+							</li>
+							<li style="margin-top: 5px;">
+								<!-- link(可链接) link-arrow(带箭头链接) -->
+								<div class="button item">
+									<div class="content">
+										可用抵扣
+										<a style="color: #e33;text-decoration: none;font-size: 10px;" href="http://www.gmsweipai.com/gms/headerPage/redpacket/index.html">（查看抵扣说明）</a>
+									</div>
+									<div class="other">
+										<sep-checkboxs v-if="totalAmounts==100">
+											<div class="button checkbox">
+												<input v-model='redPacket' type="checkbox">
+												<i>
+												</i>
+												<small class="fz-small">
+													￥{{totalAmounts.toFixed(2)}}
+												</small>
+											</div>
+										</sep-checkboxs>
+										<span class="price fg-red fz-medium" v-else>
+
+											<small>￥</small>0.00
+										</span>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="item field">
+									<div class="content">
+										<em class="name">
+											配送方式
+										</em>
+										<div class="edit">
+											<sep-radios v-model='tab_index'>
+												<!-- <div class="button radio">
+													<input value="0">
+													<i>
+													</i>
+													<small class="fz-small">
+														自提
+													</small>
+												</div> -->
+												<div class="button radio">
+													<input value="1">
+													<i>
+													</i>
+													<small class="fz-small">
+														快递
+													</small>
+												</div>
+											</sep-radios>
+										</div>
+									</div>
+									<div class="other" v-if='tab_index == 1'>
+										<span class="price fg-gray fz-small">
+											邮费
+											<small>￥</small>{{postage.toFixed(2)}}
+										</span>
+									</div>
+									<div class="other" v-else>
+										<span class="price fg-gray fz-small">
+											邮费
+											<small>￥</small>--
+										</span>
+									</div>
+								</div>
+							</li>
+							<a class="goods_know" href="http://www.gmsweipai.com/gms/headerPage/delivery/index.html">
+								<span>？</span>收货须知</a>
+						</ul>
+					</div>
+				</div>
+			</sep-render>
+		</sep-scroll>
+		<div class="footer" v-if='1 == tab_index && 1 == status'>
+			<p>合计：
+				<span class="charge">{{totalCharge.toFixed(2)}}</span>
+			</p>
+			<p>下单后24小时内付款，藏品价格享受98折优惠</p>
+			<p>下单后24小时以后72小时以内付款，藏品价格享受99折优惠</p>
+			<p>下单后超过7天未付款，藏品价格加收1%的管理服务费</p>
+			<a class="button bg-red submit" v-click='m_pay'>确认支付</a>
+		</div>
+		<!-- <div class='footer flexbox' v-if='1 == tab_index && 1 == status'>
+			<div class='l primary'>
+				<span class='fg-gray fz-medium'>合计：</span>
+				<span class='price fg-red'>
+					<small>￥</small>{{$model.collectionVo.bidPrice}}</span>
+			</div>
+			<div class='r primary'>
+				<a class="button bg-red submit" v-click='m_pay'>确认支付</a>
+			</div>
+		</div> -->
+	</div>
+
+</div>

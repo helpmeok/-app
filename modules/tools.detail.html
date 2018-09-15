@@ -1,0 +1,46 @@
+<div class = "viewbox">
+	<div class = "header">
+		<div class = "wrap">
+			<div class = "l">
+				<a back = 'tools.list' class = "button"><i class = "icon-back"></i></a>
+			</div>
+			<div class = "c">
+				<em>{{title}}</em>
+			</div>
+			<div class = "r">
+
+			</div>
+		</div>
+	</div>
+	<div class = 'body'>
+		<sep-scroll>
+			<video v-if='1 == model.id' width="100%" height = '360px' :src="model.video" controls="controls"></video>
+			<div class = 'pictures'>
+				<ul>
+					<li v-for = 'el in model.pictures'>
+						<sep-image :src = 'el'></sep-image>
+					</li>
+				</ul>
+			</div>
+
+			<div class="layout margin-top-far">
+				<ul>
+					<li>
+						<div class="item">
+							<div class="content">
+								{{model.content}}
+							</div>
+							<div class="other"></div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<section slot = "bottom">
+				<sep-dev></sep-dev>
+			</section>
+		</sep-scroll>
+	</div>
+	
+
+</div>
+

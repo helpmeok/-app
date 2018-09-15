@@ -1,0 +1,88 @@
+<div class="viewbox">
+	<div class="header">
+		<div class="wrap">
+			<div class="l">
+				<a back class="button"><i class="icon-back"></i></a>
+			</div>
+			<div class="c">
+				<em>{{title}}</em>
+			</div>
+			<div class="r">
+
+			</div>
+		</div>
+	</div>
+	<div class='body'>
+
+		<div class='top layout'>
+			<ul>
+				<li>
+					<div class="item field">
+						<div class="content">
+							<div class="edit">
+								<input type="text" placeholder="请输入藏品名称或类型" v-model="content">
+							</div>
+						</div>
+						<div class="other">
+							<sep-button text='开始搜索' wtext='正在搜索' icon='icon-search' class="submit red medium border-radius-far" v-click="m_submit">
+							</sep-button>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<sep-scroll>
+			<sep-tip v-if='!content && !isbegin' text='请输入搜索关键字' icon='icon-search'></sep-tip>
+			<sep-tip v-if='content && !isbegin' text='点击开始搜索' icon='icon-search'></sep-tip>
+			<div class="layout" v-if='virtual_list.model'>
+				<ul v-virtual-list='virtual_list'>
+					<li v-for='el in virtual_list.model'>	
+						<div class="item topalign link button link-arrow" v-click='{method : m_gain, args : el}'>
+							<div class="border-radius-near media large">
+								<sep-image v-if='!el.__load' :model='el' :src="el.picUrl"></sep-image>
+								<img v-if='el.__load' :src="el.picUrl" />
+							</div>
+							<div class="content">
+								<div class="props">
+									<div class="prop">
+										<div class="l">
+											<span class="singleline">{{el.collectionName}}</span>
+										</div>
+										<div class="r">
+
+										</div>
+									</div>
+									<div class="prop">
+										<div class="l">
+											<div class='fz-medium fg-gray'>
+												起拍价格:<span class='fg-red price'><small>￥</small>{{el.startPrice}}</span>
+											</div>
+										</div>
+										<div class="r">
+
+										</div>
+									</div>
+									<div class="prop">
+										<div class="l">
+											<div class='fz-medium fg-gray'>
+												当前价格:<span class='fg-red price'><small>￥</small>{{el.currentPrice}}</span>
+											</div>
+										</div>
+										<div class="r">
+
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<section slot="bottom">
+				<sep-dev></sep-dev>
+			</section>
+		</sep-scroll>
+	</div>
+
+</div>

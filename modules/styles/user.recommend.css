@@ -1,0 +1,64 @@
+.user-recommend .container {
+    width: 90%;
+    margin-left: 5%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.user-recommend .container tr {
+    height: 50px;
+    text-align: center;
+}
+
+.user-recommend .container tr th {
+    background-color: rgba(185, 135, 28, 0.81);
+    color: white;
+    width: 50%;
+}
+
+.user-recommend .order_box {
+    width: 100%;
+    margin-top: 30px;
+    border-collapse: collapse;
+}
+
+.user-recommend .order_box tr {
+    height: 50px;
+    text-align: center;
+}
+
+.user-recommend .order_box tr td {
+    background-color: rgba(185, 135, 28, 0.81);
+    color: white;
+    border-right: 2px solid white;
+}
+
+.user-recommend .order_box tr td:nth-of-type(1),
+.user-recommend .order_content tr td:nth-of-type(1) {
+    width: 25%;
+}
+
+.user-recommend .order_box tr td:nth-of-type(2),
+.user-recommend .order_content tr td:nth-of-type(2) {
+    width: 25%;
+}
+
+.user-recommend .order_box tr td:nth-of-type(3),
+.user-recommend .order_content tr td:nth-of-type(3) {
+    width: 50%;
+    border-right-width: 0px;
+}
+
+.user-recommend .order_content {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user-recommend .order_content tr td {
+    text-align: center;
+    height: 50px;
+    border-bottom: 2px solid lightgrey;
+    border-right: 2px solid lightgrey;
+    word-break: break-all;
+    padding: 5px;
+}

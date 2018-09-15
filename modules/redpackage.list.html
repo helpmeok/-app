@@ -1,0 +1,64 @@
+<div class = "viewbox">
+	<div class = "header">
+		<div class = "wrap">
+			<div class = "l">
+				<a back class = "button"><i class = "icon-back"></i></a>
+			</div>
+			<div class = "c">
+				<em>{{title}}</em>
+			</div>
+			<div class = "r">
+
+			</div>
+		</div>
+	</div>
+	<div class = 'body'>
+		<sep-scroll>
+			<sep-render>
+				<div slot = 'entity'>
+					<div class="layout">
+						<ul>
+							<li v-for = 'el in $model.list'>
+								<div class="item">
+									<div class="media small">
+										<sep-image :src="el.portraitUrl"></sep-image>
+									</div>
+									<div class="content">
+										<div class="props">
+											<div class="prop">
+												<div class="l">
+													{{el.nickName}}
+												</div>
+												<div class="r">
+													<strong class = 'fg-red price'><small>￥</small>{{el.amount}}</strong>
+												</div>
+											</div>
+											<div class="prop">
+												<div class="l number">
+													<span class = 'number fg-gray fz-medium'>{{el.createDate}}</span>
+												</div>
+												<div class="r">
+													
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="other">
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</sep-render>
+
+			
+			<section slot = "bottom">
+				<sep-dev></sep-dev>
+			</section>
+
+		</sep-scroll>
+	</div>
+
+</div>
+

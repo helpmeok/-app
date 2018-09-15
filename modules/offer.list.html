@@ -1,0 +1,60 @@
+<div class="viewbox">
+	<div class="header">
+		<div class="wrap">
+			<div class="l">
+				<a back class="button">
+					<i class="icon-back"></i>
+				</a>
+			</div>
+			<div class="c">
+				<em>{{title}}</em>
+			</div>
+			<div class="r">
+
+			</div>
+		</div>
+	</div>
+	<div class='body'>
+
+
+		<sep-scroll>
+			<sep-render>
+				<section slot='empty'>
+					<sep-empty icon='icon-favor' text='暂无出价记录'>
+						您来出价吧~
+					</sep-empty>
+				</section>
+				<section slot="entity">
+					<div class="layout">
+						<ul>
+							<li v-for='el in $model.list'>
+								<div class="item">
+									<div class="content">
+										<div class="props">
+											<div class="prop">
+												<div class='nickname fg-medium fg-gray singleline'>{{el.memberName}}</div>
+												<div class="l">
+													<span class='number fg-medium fg-gray'>{{el.bidTime}}</span>
+												</div>
+												<div class="r">
+													<span class='price fg-red'>
+														<small>￥</small>{{el.bidPrice}}</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="other">
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</sep-render>
+
+			<section slot="bottom">
+				<sep-dev></sep-dev>
+			</section>
+		</sep-scroll>
+	</div>
+</div>

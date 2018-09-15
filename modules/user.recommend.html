@@ -1,0 +1,59 @@
+<div class="viewbox">
+    <div class="header">
+        <div class="wrap">
+            <div class="l">
+                <a back class="button">
+                    <i class="icon-back"></i>
+                </a>
+            </div>
+            <div class="c">
+                <em>{{title}}</em>
+            </div>
+            <div class="r">
+
+            </div>
+        </div>
+    </div>
+    <div class='body'>
+        <sep-scroll>
+            <table class="container" border="1">
+                <thead>
+                    <tr>
+                        <th>任务</th>
+                        <th>金额</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>提成奖励</td>
+                        <td>{{recommendMoney}}</td>
+                    </tr>
+                    <tr>
+                        <td>推荐好友</td>
+                        <td>{{recommendNum}}人
+                            <span v-click="m_push">（查看详情）</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="order_box">
+                <tr>
+                    <td>用户名</td>
+                    <td>金额（元）</td>
+                    <td>详情</td>
+                </tr>
+            </table>
+            <table class="order_content" v-if="recommendOrder.length>0">
+                <tr v-for="item in recommendOrder">
+                    <td>{{item.memberName}}</td>
+                    <td>{{item.rewardMoney.toFixed(2)}}</td>
+                    <td>订单号：{{item.orderNo}}</br>{{item.confirmTime}}</td>
+                </tr>
+            </table>
+            <sep-empty icon='icon-favor' text='暂无数据' v-else></sep-empty>
+            <section slot="bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+    </div>
+</div>

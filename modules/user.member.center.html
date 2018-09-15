@@ -1,0 +1,104 @@
+<div class = "viewbox">
+
+	<div class = "header">
+		<div class = "wrap">
+			<div class = "l">
+				<a back class = "button"><i class = "icon-back"></i></a>
+			</div>
+			<div class = "c">
+				<em>{{title}}</em>
+			</div>
+			<div class = "r">
+
+			</div>
+		</div>
+	</div>
+	<div class = 'body'>
+		<div class = 'top' v-if = 'null != other.user'>
+			<div class = 'wrap'>
+				<div class = 'splash' :class="base_bg">
+					<div class = 'box'>
+						<img :src = 'other.user.portraitUrl'/>
+					</div>
+				</div>
+			</div>
+			<div class="layout">
+				<ul>
+					<li>
+						<!-- link(可链接) link-arrow(带箭头链接) -->
+						<div class="button item">
+							<div class="content">
+								会员等级 
+							</div>
+							<div class="other">
+								<span class = 'label bg-red fg-white number'>{{other.user.grade}}</span>
+							</div>
+						</div>
+					</li>
+					<li>
+						<!-- link(可链接) link-arrow(带箭头链接) -->
+						<div class="button item">
+							<div class="content">
+								等级进度 
+							</div>
+							<div class="other">
+								<span class = 'number'>{{other.user.regionLeft}} / {{other.user.regionRight}}</span>
+
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		<sep-scroll :class = "{'on' : null != other.user}" downpull_lock >
+			<section v-if = 'null != other.user' >
+				<div class = 'article margin-top-far'>
+					<div class = 'wrap'>
+						<ul>
+							<li>
+								<em>等级说明</em>
+								<div class = 'content'>
+									<span class = 'name'>经验值：</span>
+									<p>
+										经验值是标志着古美术会员在古美术累计的参与竞拍的经 验值，经验值越高会员等级越高。
+									</p>
+								</div>
+								<div class = 'content'>
+									<span class = 'name'>等级：</span>
+									<p>
+										古美术会员等级，由用户当前经验值的多少决定。
+										会员等级将决定古美术未来部分功能的使用限制，基本条 件及所获得的会员福利。
+										当前，会员等级除所获相应等级标示外，另可影响会员可 参与拍卖的专场，部分竞拍专场，将允许达到一定等级的 会员免交保证金进入参与出价竞拍。其它应用于会员等级 的功能，正不断完善中。
+									</p>
+								</div>
+								<div class = 'content'>
+									<span class = 'name'>经验值获取途径：</span>
+									<p>
+										出价会员在预展或拍卖每出价一次，获得一定经验值。
+										在预展场出价最高者，将获得相应经验值奖励。
+										拍得藏品者，将得到大幅经验奖励。奖励经验值取决于 藏品最终拍卖价格，价格越高，获取经验越多。
+									</p>
+								</div>
+								<div class = 'content'>
+									<span class = 'name'>注意事项：</span>
+									<p>
+										会员在拍得藏品7天后，若仍未支付相应费用，如无特殊 原因，将被视作逾期付款，系统将逐天扣除一定的会员经 验值作为逾期惩罚。
+									</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+			<sep-sessionless v-else>
+
+			</sep-sessionless>
+
+			<section slot = "bottom">
+				<sep-dev></sep-dev>
+			</section>
+		</sep-scroll>
+	</div>
+</div>
+

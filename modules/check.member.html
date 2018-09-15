@@ -1,0 +1,50 @@
+<div class="viewbox">
+    <div class="header">
+        <div class="wrap">
+            <div class="l">
+                <a class="button" push="/"><i class="icon-back"></i></a>
+            </div>
+            <div class="c">
+                <em>{{title}}</em>
+            </div>
+            <div class="r">
+            </div>
+        </div>
+    </div>
+    <div class='body'>
+        <form v-form='form' class="form">
+            <div class="layout">
+                <ul>
+                    <li class="list">
+                        <div class="item field">
+                            <div class="content">
+                                <div class="edit">
+                                    <input type="text" placeholder="姓名：（只能输入2到4个中文）" v-rules='{required : true, minlength : 2}'
+                                        data-minlength-msg='姓名格式不正确' data-required-msg='请输入姓名' maxlength='4' v-model='model.name'
+                                        class="input">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list">
+                        <div class="item field">
+                            <div class="content">
+                                <div class="edit">
+                                    <input type="tel" placeholder="手机号：" v-rules='{required : true, minlength : 11}'
+                                        data-minlength-msg='手机格式不正确' data-required-msg='请输入手机号码' maxlength='11' v-model='model.mobile'
+                                        class="input">
+                                </div>
+                            </div>
+                            <div class="other">
+
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class='padding-far flexbox'>
+                <sep-button v-click='form.m_submit' text='申请' wtext='申请中...' class='default primary border-radius-near submit'></sep-button>
+            </div>
+        </form>
+    </div>
+</div>

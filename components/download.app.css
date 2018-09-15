@@ -1,0 +1,44 @@
+.download-app {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 10;
+}
+.download-app .layout ul li {
+	color: #fff;
+	background-color: rgba(0,0,0,0.8);
+}
+.download-app .layout ul li:after {
+	display: none;
+}
+.download-app .layout > ul:before {
+	display: none;
+}
+.download-app .layout > ul .button {
+	
+}
+.download-app.top {
+	position: relative;
+}
+.download-app .layout > ul .button.to {
+	display: inline-block;
+	padding: 5px 10px;
+	border-radius: 30px;
+	background-color: #FEFC00;
+	color: #000;
+	font-size: 13px;
+}
+.download-app .layout > ul .button.close {
+	margin-left: 10px;
+	background-color: #333;
+	color: #fff;
+	width: 25px;
+	height: 25px;
+	text-align: center;
+	line-height: 25px;
+	border-radius: 100%;
+}
+.download-app .layout .other {
+
+}

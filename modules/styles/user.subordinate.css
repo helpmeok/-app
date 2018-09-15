@@ -1,0 +1,46 @@
+.user-subordinate .order_box {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+}
+
+.user-subordinate .order_box tr {
+    height: 50px;
+    text-align: center;
+}
+
+.user-subordinate .order_box tr td {
+    background-color: rgba(185, 135, 28, 0.81);
+    color: white;
+    border-right: 2px solid white;
+}
+
+.user-subordinate .order_box tr td:nth-of-type(1),
+.user-subordinate .order_content tr td:nth-of-type(1) {
+    width: 30%;
+}
+
+.user-subordinate .order_box tr td:nth-of-type(2),
+.user-subordinate .order_content tr td:nth-of-type(2) {
+    width: 30%;
+}
+
+.user-subordinate .order_box tr td:nth-of-type(3),
+.user-subordinate .order_content tr td:nth-of-type(3) {
+    width: 40%;
+    border-right-width: 0px;
+}
+
+.user-subordinate .order_content {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user-subordinate .order_content tr td {
+    text-align: center;
+    height: 50px;
+    border-bottom: 2px solid lightgrey;
+    border-right: 2px solid lightgrey;
+    word-break: break-all;
+    padding: 5px;
+}

@@ -1,0 +1,98 @@
+<div class = "viewbox">
+	<div class = "header">
+		<div class = "wrap">
+			<div class = "l">
+				<a back class = "button"><i class = "icon-back"></i></a>
+			</div>
+			<div class = "c">
+				<em>{{title}}</em>
+			</div>
+			<div class = "r">
+
+			</div>
+		</div>
+	</div>
+	<div class = 'body'>
+		<div class = 'top' v-if="null != other.user">
+			<div class = 'wrap'>
+				<div class = 'splash' :class="base_bg">
+					<div class = 'box'>
+						<img :src = '$model.portraitUrl'/>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<sep-scroll class = 'scroll'>
+			<sep-render>
+				<section slot = 'entity'>
+					<div class="layout">
+						<ul>
+							<li>
+								<!-- link(可链接) link-arrow(带箭头链接) -->
+								<div class="button item">
+									<div class="content">
+										姓名 
+									</div>
+									<div class="other">
+									 	{{$model.name}}
+									</div>
+								</div>
+							</li>
+							<li>
+								<!-- link(可链接) link-arrow(带箭头链接) -->
+								<div class="button item">
+									<div class="content">
+										等级 
+									</div>
+									<div class="other">
+										<span class = 'label bg-red fg-white number'>{{$model.memberNum}}</span>
+									</div>
+								</div>
+							</li>
+							<li>
+								<!-- link(可链接) link-arrow(带箭头链接) -->
+								<div class="button item">
+									<div class="content">
+										微信号 
+									</div>
+									<div class="other">
+										<span class = 'number'>
+											{{$model.weixinNum ? $model.weixinNum : '暂无'}}
+										</span>
+									</div>
+								</div>
+							</li>
+							<li class = 'margin-top-far'>
+								<!-- link(可链接) link-arrow(带箭头链接) -->
+								<div class="button item">
+									<div class="content">
+										个人简介 
+									</div>
+									<div class="other">
+										
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="item field topalign">
+									<div class="content remark">
+										<div class="edit fz-medium fg-gray padding-near">
+											{{$model.description}}
+										</div>
+									</div>
+								</div>
+							</li>
+							
+						</ul>
+					</div>
+				</section>
+			</sep-render>
+			
+			<section slot = "bottom">
+				<sep-dev></sep-dev>
+			</section>
+		</sep-scroll>
+	</div>
+</div>
+

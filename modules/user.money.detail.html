@@ -1,0 +1,59 @@
+<div class = "viewbox">
+	<div class = "header">
+		<div class = "wrap">
+			<div class = "l">
+				<a back class = "button"><i class = "icon-back"></i></a>
+			</div>
+			<div class = "c">
+				<em>{{title}}</em>
+			</div>
+			<div class = "r">
+
+			</div>
+		</div>
+	</div>
+	<div class = 'body'>
+		<sep-scroll>
+			<sep-render>
+				<section slot = "entity">
+					<div class="layout">
+						<ul>
+							<li v-for = "el in $model.list">
+								<!-- link(可链接) link-arrow(带箭头链接) -->
+								<div class="item topalign link button">
+									<div class="content">
+										<div class="props">
+											<div class="prop">
+												<div class="l padding-right-far">
+													<span class = 'singleline'>{{el.title}}</span>
+													
+												</div>
+												<div class="r">
+													<span class="fg-red number" :class="{'color':el.color}">{{el.amounts}}</span>
+												</div>
+											</div>
+											<div class="prop">
+												<div class="r">
+													<span class="fz-medium fg-gray number">{{el.date}}</span>
+													
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="button default visual blue margin-far">
+						点击或上拉加载
+					</div>
+				</section>
+			</sep-render>
+			<section slot = "bottom">
+				<sep-dev></sep-dev>
+			</section>
+		</sep-scroll>
+	</div>
+
+</div>
+

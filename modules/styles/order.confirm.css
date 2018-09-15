@@ -1,0 +1,222 @@
+/* .order-confirm .uppull {
+	display: none !important;
+} */
+.order-confirm .entity .tip {
+	height: 30px;
+	background-color: #ffffcc;
+	position: relative;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 0 10px;
+	color: #ff9966;
+	line-height: 30px;
+	font-size: 14px;
+}
+
+.order-confirm .entity .tip i {
+	display: inline-block;
+	font-size: 1rem;
+	width: auto;
+	height: auto;
+	line-height: 1;
+	background-color: transparent;
+	color: inherit;
+}
+
+.order-confirm .button.radio {
+	margin-right: .5rem;
+}
+
+.order-confirm .button.radio i:before {
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+}
+
+.order-confirm .layout .field .name {
+	min-width: 70px;
+	font-size: 15px;
+}
+
+.order-confirm .footer {
+	-moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+	z-index: 5;
+	background-color: #fff;
+	padding: 10px 0px 0px 0px;
+	position: fixed;
+	bottom: 0;
+}
+
+.order-confirm .footer p {
+	color: #9e9e9e;
+	font-size: 12px;
+	line-height: 25px;
+	text-indent: 1em;
+}
+
+.order-confirm .footer p:nth-of-type(1) {
+	color: black;
+}
+
+.order-confirm .footer .charge {
+	color: #e33;
+	font-size: 25px;
+}
+
+.order-confirm .footer .button {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	border-radius: 15px;
+	height: 20px;
+	text-align: center;
+	line-height: 30px;
+	color: white;
+	padding: 0 30px;
+}
+
+.order-confirm .goods_know {
+	color: #1b89c8;
+	font-size: 14px;
+	margin: 10px;
+	display: block;
+	margin-bottom: 150px;
+	margin-top: 20px;
+}
+
+.order-confirm .goods_know span {
+	display: inline-block;
+	border-radius: 50%;
+	background-color: #1b89c8;
+	color: white;
+	width: 20px;
+	height: 20px;
+	text-align: center;
+	line-height: 20px;
+	margin-right: 5px;
+}
+
+.order-confirm .entity .topalign img {
+	border-radius: 5px !important;
+}
+
+.order-confirm .footer .l {
+	line-height: 50px;
+	text-align: right;
+	padding-right: 15px;
+}
+
+.order-confirm .footer .submit {
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	color: #fff;
+}
+
+.order-confirm .layout .top {
+	height: 35px;
+}
+
+.order-confirm .tickets {
+	padding-bottom: 10px;
+}
+
+.order-confirm .paymask {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 55;
+	background-color: rgba(17, 16, 16, 0.452);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.order-confirm .payview {
+	width: 80%;
+	border-radius: 10px;
+	padding: 10px;
+	background-color: white;
+}
+
+.order-confirm .payview p {
+	color: black;
+	text-align: left;
+	border-bottom: 1px solid black;
+	height: 40px;
+	vertical-align: middle;
+	line-height: 40px;
+}
+
+.order-confirm .payview p:nth-of-type(2) input {
+	background-color: #9e9e9e;
+	height: 30px;
+	border: none;
+	text-indent: 1em;
+	border-radius: 3px;
+	width: 120px;
+}
+
+.order-confirm .payview p:nth-of-type(2) input::placeholder {
+	color: lightgray;
+}
+
+.order-confirm .payview p:nth-of-type(3) button {
+	width: 80%;
+	height: 30px;
+	margin-left: 10%;
+	border: none;
+	outline: none;
+	border-radius: 3px;
+	background-color: rgb(46, 46, 243);
+	color: white;
+}
+
+.order-confirm .payview .wxpay {
+	vertical-align: middle;
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	background-image: url('../../modules/images/wxpay.png');
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+.order-confirm .layout .filed {
+	display: flex;
+	display: -webkit-flex;
+	flex-direction: column;
+	padding: 0 15px 15px 15px;
+	font-size: 14px;
+	color: #F23030;
+}
+
+.order-confirm .layout .filed .preferential {
+	padding: 3px 5px;
+	border: 1px solid #F23030;
+	border-radius: 5px;
+}
+.order-confirm .layout .filed .discount{
+	padding: 3px 5px;
+	border: 1px solid #F23030;
+	border-radius: 5px;
+	color: white;
+	background-color: #F23030;
+}
+.order-confirm .layout .filed .price-item {
+	width: 100%;
+	display: flex;
+	display: -webkit-flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 10px;
+}
+.order-confirm .layout .filed .activityPicUrl{
+	width: 80px;
+	height: 25px;
+}

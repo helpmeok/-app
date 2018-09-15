@@ -1,0 +1,74 @@
+.photo-browse .viewbox {
+	background-color: #222;
+}
+.photo-browse .header {
+	background-color: inherit;
+}
+.photo-browse .list {
+	position: relative;
+	margin-top: 15px;
+}
+.photo-browse .body {
+	top: 0;
+	bottom: 60px;
+}
+.photo-browse .swiper {
+	position: relative;
+	margin-top: 50%;
+	-webkit-transform: translate3d(0, -50%, 0) ;
+    transform: translate3d(0, -50%, 0) ;
+}
+.photo-browse .loader, .loader:after {
+	width: 4rem;
+	height: 4rem;
+	border-width: 3px;
+}
+.photo-browse .swiper .swiper-slide {
+	background-color: #222;
+	text-align: center;
+	border-radius: 4px;
+	overflow: hidden;
+	height: 20rem;
+	position: relative;
+}
+.photo-browse .list em {
+	display: block;
+	text-align: center;
+	color: #fff;
+	font-weight: bold;
+	font-family: "arial";
+	padding: 10px;
+}
+.photo-browse .list em b {
+	padding: 5px 15px;
+	background-color: rgba(255,255,255,0.1);
+	border-radius: 30px;
+	line-height: 1rem;
+	font-weight: 400;
+}
+.photo-browse .swiper-slide img {
+	width: auto;
+	max-width: 100%;
+	height: inherit;
+}
+.photo-browse .list {
+	background-color: inherit;
+}
+
+.photo-browse .close {
+	position: absolute;
+	left: 50%;
+	width: 35px;
+	height: 35px;
+	margin-left: -17.5px;
+	background-color: #333;
+	border: 2px solid #999;
+	text-align: center;
+	line-height: 35px;
+	border-radius: 100%;
+	color: #eee;
+	font-size: 1.5rem;
+}
+.photo-browse .footer {
+	height: 60px;
+}

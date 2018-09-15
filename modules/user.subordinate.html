@@ -1,0 +1,39 @@
+<div class="viewbox">
+    <div class="header">
+        <div class="wrap">
+            <div class="l">
+                <a back class="button">
+                    <i class="icon-back"></i>
+                </a>
+            </div>
+            <div class="c">
+                <em>{{title}}</em>
+            </div>
+            <div class="r">
+
+            </div>
+        </div>
+    </div>
+    <div class='body'>
+        <sep-scroll>
+            <table class="order_box">
+                <tr>
+                    <td>用户名</td>
+                    <td>手机号</td>
+                    <td>注册时间</td>
+                </tr>
+            </table>
+            <table class="order_content" v-if="memberList.length>0">
+                <tr v-for="item in memberList">
+                    <td>{{item.nickname}}</td>
+                    <td>{{item.mobile}}</td>
+                    <td>{{m_timestampToTime(item.createDate)}}</td>
+                </tr>
+            </table>
+            <sep-empty icon='icon-favor' text='暂无数据' v-else></sep-empty>
+            <section slot="bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+    </div>
+</div>

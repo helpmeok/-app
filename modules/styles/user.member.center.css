@@ -1,0 +1,42 @@
+.user-member-center .top {
+	position: relative;
+}
+.user-member-center .splash {
+	height: 150px;
+	text-align: center;
+	position: relative;
+}
+.user-member-center .top .box {
+	margin-top: 20px;
+	height: 100px;
+	width: 100px;
+	border-radius: 100%;
+	display: inline-block;
+	position: relative;
+}
+.user-member-center .top .box img {
+	width: 100%;
+	height: 100%;
+	border-radius: inherit;
+	z-index: 2;
+	position: relative;
+}
+.user-member-center .top .box:after {
+	z-index: 1;
+	display: block;
+	content: '';
+	position: absolute;
+	left: -5px;
+	top: -5px;
+	width: 100px;
+	height: 100px;
+	padding: 5px;
+	background-color: rgba(0,0,0,0.1);
+	border-radius: inherit;
+}
+.user-member-center .scroll.on {
+	margin-top: 238px;
+}
+.sepui.weixin .user-member-center .scroll.on {
+	top: 0;
+}

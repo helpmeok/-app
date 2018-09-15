@@ -1,0 +1,37 @@
+.user-center .tools {
+    border-top: 1px solid #eee;
+}
+
+.user-center .layout>ul>li.tools-more .item {
+    min-height: 35px;
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
+}
+
+.user-center .myqrcode {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 60px;
+    top: 25px;
+}
+
+.user-center .canvas_mask {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #504a4a;
+    z-index: 99 !important;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-center .canvas_image {
+    background-color: #fff;
+    position: relative;
+    z-index: 999;
+}

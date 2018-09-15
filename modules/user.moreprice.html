@@ -1,0 +1,42 @@
+<div class="viewbox">
+    <div class="header">
+        <div class="wrap">
+            <div class="l">
+                <a back class="button">
+                    <i class="icon-back"></i>
+                </a>
+            </div>
+            <div class="c">
+                <em>{{title}}</em>
+            </div>
+            <div class="r">
+
+            </div>
+        </div>
+    </div>
+    <div class='body'>
+        <sep-scroll>
+            <sep-render>
+                <section slot='empty'>
+                    <sep-empty icon='icon-favor' text='目前没有更多出价'>快去出价吧~</sep-empty>
+                </section>
+                <section slot="entity">
+                    <div class="layout">
+                        <ul>
+                            <li v-for="(el,i) in $model.list">
+                                <div class="list">
+                                    <span>{{el.exceedUsrName.length>7?el.exceedUsrName.substr(0,7)+'...':el.exceedUsrName}}</span>
+                                    <span>{{el.bitTiem.split(' ')[1]}}</span>
+                                    <span>￥{{el.bitPrice}}</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </sep-render>
+            <section slot="bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+    </div>
+</div>

@@ -1,0 +1,263 @@
+.activity-detail .header {
+	display: none;
+}
+
+.activity-detail .body .close {
+	position: absolute;
+	right: 5px;
+	top: 10px;
+	width: 35px;
+	height: 35px;
+	line-height: 35px;
+	color: #fff;
+	text-align: center;
+	z-index: 10;
+	font-size: 25px;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.activity-detail .body {
+	top: 0;
+	background-color: #000;
+}
+
+.activity-detail .wait {
+	position: absolute;
+	left: 0;
+	top: 30%;
+	right: 0;
+	bottom: 0;
+	text-align: center;
+}
+
+.activity-detail .image {
+	position: relative;
+	z-index: 0;
+}
+
+.activity-detail .wait p {
+	font-size: 14px;
+	color: #f8f8f8;
+	margin-top: 20px;
+	font-family: 'Lato';
+	text-transform: uppercase;
+	font-size: 14px;
+	letter-spacing: 1.5px;
+	-webkit-animation: fade 1s infinite;
+	-moz-animation: fade 1s infinite;
+}
+
+.activity-detail .stick {
+	width: 30px;
+	height: 3px;
+	background: white;
+	display: inline-block;
+	margin-left: -8px;
+}
+
+.activity-detail .stick:nth-child(n) {
+	transform: rotate(30deg);
+	-ms-transform: rotate(30deg);
+	/* IE 9 */
+	-webkit-transform: rotate(30deg);
+	/* Safari and Chrome */
+	-moz-transform: rotate(30deg);
+	-webkit-animation: fall 2s infinite;
+	-moz-animation: fall 2s infinite;
+}
+
+.activity-detail .stick:nth-child(2n) {
+	transform: rotate(-30deg);
+	-ms-transform: rotate(-30deg);
+	/* IE 9 */
+	-webkit-transform: rotate(-30deg);
+	/* Safari and Chrome */
+	-moz-transform: rotate(-30deg);
+	-webkit-animation: rise 2s infinite;
+	-moz-animation: rise 2s infinite;
+}
+
+.activity-detail .buy {
+	position: absolute;
+	right: 0;
+	bottom: 15px;
+}
+
+.activity-detail .buy .continue {
+	text-align: center;
+	color: #fff;
+	padding: 10px 50px 10px 30px;
+	font-size: 16px;
+	background-color: rgba(238, 51, 51, 0.8);
+	border-radius: 30px;
+	border: 3px solid rgba(0, 0, 0, 0.2);
+	border-right: none;
+}
+
+.activity-detail .submit.button {
+	font-size: 14px;
+	background-color: #FFD000;
+	color: #222;
+	height: 40px;
+	line-height: 40px;
+	margin-top: 20px;
+	text-align: center;
+	border-radius: 2px;
+}
+
+.activity-detail .settings {
+	position: relative;
+	background-color: #111;
+}
+
+.activity-detail .settings>em {
+	font-size: 16px;
+	padding: 15px 10px;
+	color: #f8f8f8;
+	display: block;
+	text-align: center;
+}
+
+.activity-detail .settings input {
+	border: none;
+	outline: none;
+	height: 40px;
+	color: #f8f8f8;
+	position: relative;
+	display: block;
+	border-radius: 0;
+	text-align: center;
+	font-family: 'arial';
+	font-size: 14px;
+	width: 40%;
+	left: 30%;
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.activity-detail .share {
+	z-index: 10;
+	position: absolute;
+	bottom: 4.5px;
+	right: 4px;
+	background-color: #FCDE00;
+	color: #222;
+	text-align: center;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 20px;
+	border-radius: 100%;
+}
+
+@-webkit-keyframes rise {
+	50% {
+		transform: rotate(30deg);
+		-ms-transform: rotate(30deg);
+		/* IE 9 */
+		-webkit-transform: rotate(30deg);
+		-moz-transform: rotate(30deg);
+	}
+}
+
+@-moz-keyframes rise {
+	50% {
+		transform: rotate(30deg);
+		-ms-transform: rotate(30deg);
+		/* IE 9 */
+		-webkit-transform: rotate(30deg);
+		-moz-transform: rotate(30deg);
+	}
+}
+
+@-o-keyframes rise {
+	50% {
+		transform: rotate(30deg);
+		-ms-transform: rotate(30deg);
+		/* IE 9 */
+		-webkit-transform: rotate(30deg);
+		-moz-transform: rotate(30deg);
+	}
+	@keyframes rise {
+		50% {
+			transform: rotate(30deg);
+			-ms-transform: rotate(30deg);
+			/* IE 9 */
+			-webkit-transform: rotate(30deg);
+			-moz-transform: rotate(30deg);
+		}
+	}
+}
+
+@-webkit-keyframes fall {
+	50% {
+		transform: rotate(-30deg);
+		-ms-transform: rotate(-30deg);
+		/* IE 9 */
+		-webkit-transform: rotate(-30deg);
+		-moz-transform: rotate(30deg);
+	}
+}
+
+@-moz-keyframes fall {
+	50% {
+		transform: rotate(-30deg);
+		-ms-transform: rotate(-30deg);
+		/* IE 9 */
+		-webkit-transform: rotate(-30deg);
+		-moz-transform: rotate(-30deg);
+	}
+}
+
+@-o-keyframes fall {
+	50% {
+		transform: rotate(-30deg);
+		-ms-transform: rotate(-30deg);
+		/* IE 9 */
+		-webkit-transform: rotate(-30deg);
+		-moz-transform: rotate(30deg);
+	}
+	@keyframes fall {
+		50% {
+			transform: rotate(-30deg);
+			-ms-transform: rotate(-30deg);
+			/* IE 9 */
+			-webkit-transform: rotate(-30deg);
+			-moz-transform: rotate(30deg);
+		}
+	}
+}
+
+@-webkit-keyframes fade {
+	50% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@-moz-keyframes fade {
+	50% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@-o-keyframes fade {
+	50% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 1;
+	}
+	@keyframes fade {
+		50% {
+			opacity: 0.5;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+}

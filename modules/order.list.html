@@ -1,0 +1,107 @@
+<div class="viewbox">
+	<div class="header">
+		<div class="wrap">
+			<div class="l">
+				<a back class="button">
+					<i class="icon-back"></i>
+				</a>
+			</div>
+			<div class="c">
+				<em>{{title}}</em>
+			</div>
+			<div class="r">
+
+			</div>
+		</div>
+	</div>
+	<div class='body'>
+		<sep-scroll>
+			<sep-render>
+				<section slot='empty'>
+					<sep-empty icon="icon-favor" text="暂无符合条件的记录">
+						请稍后再试..
+					</sep-empty>
+				</section> 
+				<section slot="entity">
+					<div class="layout">
+						<ul>
+							<li v-for="el in $model.list" class="margin-bottom-far">
+								<div class="fillitem button">
+									<div class="top">
+										<sep-checkboxs v-if="state==1">
+											<div class="checkboxs button">
+												<input type="checkbox" :value="el.orderId + ',' + el.bidPrice" v-model='orderArr'>
+												<i>
+												</i>
+											</div>
+										</sep-checkboxs>
+										<div class="l">
+											<span class="fz-medium number">订单号:{{el.orderNo}}</span>
+										</div>
+										<div class="r">
+											<span class="fg-red">{{el.orderStateTypeStr}}</span>
+										</div>
+									</div>
+									<div class="item topalign link" v-click='{method : m_push, args : el}'>
+										<div class="media large">
+											<img :src="el.imgUrl">
+										</div>
+										<div class="content">
+											<div class="props">
+												<div class="prop">
+													<div class="l singleline">
+														<span>{{el.collectionName}}</span>
+													</div>
+												</div>
+												<div class="prop">
+													<div class="l margin-top-far">
+														<span class="fz-small fg-gray">
+															{{el.specification}}
+														</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="bottom">
+										<div class="l">
+
+										</div>
+										<div class="r">
+											<span class='fg-gray fz-medium'>价格</span>
+											<span class="fg-red price">
+												<small>￥</small>{{Number(el.bidPrice).toFixed(2)}}</span>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul> 
+					</div>
+
+				</section>
+			</sep-render>
+
+			<section slot="bottom" style="margin-bottom: 70px;">
+				<sep-dev></sep-dev>
+			</section>
+
+		</sep-scroll>
+		<div class="footer" v-if="state==1">
+			<sep-checkboxs>
+				<div class="checkboxs button">
+					<input type="checkbox" v-model='checkOrderAll'>
+					<i>
+					</i>
+					<small>
+						全选&#X3000;
+						<span style="color: #e33;">¥{{totalPrice}}</span>
+					</small>
+				</div>
+			</sep-checkboxs>
+			<div class="submit" v-click="m_pay">
+				去结算（{{orderLength}}）
+			</div>
+		</div>
+	</div>
+
+</div>

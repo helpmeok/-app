@@ -1,0 +1,25 @@
+.order-list .footer {
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+    background-color: #fff;
+}
+
+.order-list .footer .submit {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    padding: 0 15px;
+    background-color: #e33;
+    text-align: center;
+    line-height: 60px;
+    color: #fff;
+}
+
+.order-list .footer .button {
+    margin: 15px;
+}

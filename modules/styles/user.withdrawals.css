@@ -1,0 +1,9 @@
+.user-withdrawals .prompt {
+    padding: 10px 15px;
+}
+.user-withdrawals .submit {
+	height: 35px;
+	line-height:35px;
+	margin: 15px;
+	border-radius: 4px;
+}

@@ -1,0 +1,35 @@
+.special-deposit .body .container {
+	width: 95%;
+	height: 100%;
+	margin: 0 auto;
+	margin-top: 10px;
+}
+
+.special-deposit .body .container .big-text {
+	font-size: 15px;
+	text-indent: 2rem;
+	line-height: 28px;
+}
+
+.special-deposit .body .container .small-text {
+	font-size: 12px;
+	text-indent: 2rem;
+	color: #00b688;
+}
+
+.special-deposit .body .container button {
+	width: 70%;
+	height: 41px;
+	color: white;
+	border: none;
+	background-color: #d81617;
+	border-radius: 15px;
+	margin-left: 15%;
+	margin-top: 30px;
+	font-size: 17px;
+}
+
+.special-deposit .body .container ul  li{
+		font-size: 15px;
+		text-indent: 2rem;
+}

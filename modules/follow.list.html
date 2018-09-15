@@ -1,0 +1,85 @@
+<div class = "viewbox">
+	<div class = "header">
+		<div class = "wrap">
+			<div class = "l">
+				<a back class="button"><i class = "icon-back"></i></a>
+			</div>
+			<div class = "c">
+				<em>{{title}}</em>
+			</div>
+			<div class = "r">
+
+			</div>
+		</div>
+	</div>
+	<div class = 'body'>
+		<sep-scroll>
+			<sep-render>
+				<section slot = 'empty'>
+					<sep-empty icon = 'icon-favor' text = '暂无关注的藏品'>去关注几个吧~</sep-empty>
+				</section>
+				<section slot="entity"> 
+					<div class="layout">
+						<ul>  
+							<li v-for = "el in $model.list">
+								<div class="item link topalign button link-arrow margin-bottom-near" v-click = '{method : m_gain, args : el}'>
+									<div class="border-radius-near media large">
+										<img :src="el.picUrl">
+									</div>
+									<div class="content">
+										<div class="props">
+											<div class="prop">
+												<div class="l">
+													<span class="singleline">{{el.collectionName}}</span>
+												</div>
+												<div class="r">
+													
+												</div>
+											</div>
+											<div class="prop">
+												<div class="l">
+													<div class = 'fz-medium fg-gray'>
+														起拍价格:<span class = 'fg-red price'><small>￥</small>{{el.startPrice}}</span>
+													</div>
+												</div>
+												<div class="r">
+													
+												</div>
+											</div>
+											<div class="prop">
+												<div class="l">
+													<div class = 'fz-medium fg-gray'>
+														当前价格:<span class = 'fg-red price'><small>￥</small>{{el.currentPrice}}</span>
+													</div>
+												</div>
+												<div class="r">
+													<a type = 'edit' v-click="{method : m_toggle_focus , args : el}" class="ev-stop button icon-delete fg-gray">
+
+													</a>
+												</div>
+											</div>
+											<div class="prop">
+												<div class="l">
+													<div class = 'fz-medium fg-gray'>
+														
+													</div>
+												</div>
+												<div class="r">
+													
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</sep-render>
+			<section slot = "bottom">
+				<sep-dev></sep-dev>
+			</section>
+		</sep-scroll>
+	</div>
+</div>
+

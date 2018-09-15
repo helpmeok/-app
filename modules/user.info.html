@@ -1,0 +1,196 @@
+<div class="viewbox">
+	<div class="header">
+		<div class="wrap">
+			<div class="l">
+				<a back class="button">
+					<i class="icon-back"></i>
+				</a>
+			</div>
+			<div class="c">
+				<em>{{title}}</em>
+			</div>
+			<div class="r">
+
+			</div>
+		</div>
+	</div>
+	<div class='body'>
+		<sep-scroll :style="other.user ? {bottom: '50px'} : ''">
+			<form v-form='form'>
+				<sep-render>
+					<section slot='entity'>
+						<div class="layout"> 
+							<ul>
+								<li>
+									<div class="item file button link-arrow">
+
+										<sep-file v-model="$model.portraitUrl"></sep-file>
+										<div class="media border-radius-100per large">
+											<img :src="$model.portraitUrl" />
+										</div>
+										<div class="content">
+
+										</div>
+										<div class="other">
+											头像
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="layout margin-top-far">
+							<ul>
+								<li>
+									<div class="item field">
+										<div class="content">
+											<em class="name">
+												昵称:
+											</em>
+											<div class="edit">
+												<input type="text" placeholder="设置昵称" v-model="$model.nickname" />
+											</div>
+										</div>
+										<div class="other">
+
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="item field">
+										<div class="content">
+											<em class="name">
+												姓名:
+											</em>
+											<div class="edit">
+												<input type="text" placeholder="姓名" v-model="$model.memberName">
+											</div>
+										</div>
+										<div class="other">
+
+										</div>
+									</div>
+								</li>
+								<!--<li>
+									<div class="item field">
+										<div class="content">
+											<em class="name">
+												身份证号:
+											</em>
+											<div class="edit">
+												<input type="text" placeholder="--" disabled>
+											</div>
+										</div>
+										<div class="other">
+										
+										</div>
+									</div>
+								</li>-->
+								<li>
+									<div class="item field">
+										<div class="content">
+											<em class="name">
+												性别:
+											</em>
+											<div class="edit">
+												<sep-radios v-model="$model.sexType">
+													<div class="button">
+														<input value='1' />
+														<i>
+														</i>
+														<small>
+															男
+														</small>
+													</div>
+													<div class="button">
+														<input value='0' />
+														<i>
+														</i>
+														<small>
+															女
+														</small>
+													</div>
+												</sep-radios>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="item field">
+										<div class="content">
+											<em class="name">
+												职业:
+											</em>
+											<div class="edit">
+												<input type="text" placeholder="" v-model="$model.job">
+											</div>
+										</div>
+										<div class="other">
+
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="item field">
+										<div class="content">
+											<em class="name">
+												个性签名:
+											</em>
+											<div class="edit">
+												<input type="text" placeholder="" v-model="$model.signature">
+											</div>
+										</div>
+										<div class="other">
+
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="layout margin-top-far">
+							<ul>
+								<li>
+									<!-- link(可链接) link-arrow(带箭头链接) -->
+									<div class="button item link-arrow" push="user.setpaypwd" v-if="!user.ifSetAmountPassWord">
+										<div class="content">
+											设置支付密码
+										</div>
+										<div class="other">
+
+										</div>
+									</div>
+									<div class="button item link-arrow" push="user.updatepaypwd" v-else>
+										<div class="content">
+											修改支付密码
+										</div>
+										<div class="other">
+
+										</div>
+									</div>
+								</li>
+								<li>
+									<!-- link(可链接) link-arrow(带箭头链接) -->
+									<div class="button item link-arrow" push="user.change.loginpwd">
+										<div class="content">
+											修改登录密码
+										</div>
+										<div class="other">
+
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</section>
+				</sep-render>
+			</form>
+			<section slot="bottom">
+				<sep-dev></sep-dev>
+			</section>
+		</sep-scroll>
+		<div class="footer center" v-if="null != other.user">
+			<div class="bg-white">
+				<sep-button v-if="other.user" class='submit save' text='保存' :loading='false' wtext='保存中..' v-click="form.m_submit"></sep-button>
+			</div>
+		</div>
+	</div>
+</div>

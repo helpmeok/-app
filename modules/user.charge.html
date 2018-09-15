@@ -1,0 +1,61 @@
+<div class="viewbox">
+    <div class="header">
+        <div class="wrap">
+            <div class="l">
+                <a back class="button"><i class = "icon-back"></i></a>
+            </div>
+            <div class="c">
+                <em>{{title}}</em>
+            </div>
+            <div class="r">
+            </div>
+        </div>
+    </div>
+    <div class = 'body'>
+
+    
+        <sep-scroll style="bottom: 50px">
+            <div class="layout">
+                <ul>
+                    <li>
+                        <div class="item field">
+                            <div class="content">
+                                <em class="name">
+                                    账号:
+                                </em>
+                                <div class="edit">
+                                    <input type="text" placeholder="请输入充值账号">
+                                </div>
+                            </div>
+                            <div class="other">
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item field">
+                            <div class="content">
+                                <em class="name">
+                                    金额:
+                                </em>
+                                <div class="edit">
+                                    <input type="text" placeholder="请输入充值金额">
+                                </div>
+                            </div>
+                            <div class="other">
+                            </div>
+                        </div> 
+                    </li>
+                </ul>
+            </div>
+
+            <section slot="bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+        <div class="footer center" >
+            <div class = "bg-white">
+                <sep-button text = "确定充值" wtext = '请稍后..' class = "submit default red save"></sep-button>
+            </div>
+        </div>
+    </div>
+</div>

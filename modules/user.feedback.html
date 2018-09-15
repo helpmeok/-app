@@ -1,0 +1,47 @@
+<div class = "viewbox">
+	<div class = "header">
+		<div class = "wrap">
+			<div class = "l">
+				<a back class = "button"><i class = "icon-back"></i></a>
+			</div>
+			<div class = "c">
+				<em>{{title}}</em>
+			</div>
+			<div class = "r">
+				<sep-button v-if="other.user" class = 'submit' text = '提交' wtext = '请稍后..' v-click="form.m_submit"></sep-button>
+			</div>
+		</div>
+	</div>
+	<div class = 'body'>
+		<sep-scroll>
+			<form v-form = 'form'>
+				<div class="layout">
+					<ul>
+						<li>
+							<div class="item field topalign">
+								<div class="content">
+									<!-- <em class="name">
+										文本域
+									</em> -->
+									<div class="edit">
+										<textarea class="content" maxlength = '500' placeholder="请输入您的宝贵意见或账建议,非常感谢" v-model='content'></textarea>
+										<span class="counter">
+											{{content.length}} / 500
+										</span>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class = 'padding-far'>
+					
+				</div>
+			</form>
+			<section slot = "bottom">
+				<sep-dev></sep-dev>
+			</section>
+		</sep-scroll>
+	</div>
+</div>
+

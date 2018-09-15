@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <!--开启对web app的支持-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!--开启对web app的支持-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link href="app.png" rel="apple-touch-icon" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!--主要是正对苹果手机将数字自动识别为号码-->
+    <meta name="format-detection" content="telephone=no" />
+    <!-- 忽略识别邮箱，主要是针对安卓手机会自动将符合邮箱格式的字符串识别为邮箱地址-->
+    <meta content="email=no" name="format-detection" />
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <meta name="apple-mobile-web-app-title" content="古美术.H5" />
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>联合登录绑定</title>
+    <script src="./plugs/zepto.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+
+        }
+
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #f1f1f1;
+        }
+
+        header,
+        main,
+        .mask {
+            visibility: hidden;
+        }
+
+        input,
+        button {
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+            border: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            width: 100%;
+            height: 4.5rem;
+            background-image: url('activity/wxrela/bg.png');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+
+        .title {
+            font-size: .3rem;
+            color: #d81617;
+            text-align: center;
+            margin: .5rem 0;
+        }
+
+        .push_gms {
+            font-size: .36rem;
+            color: #d81617;
+            text-align: center;
+            margin: .5rem 0;
+        }
+
+        .form_view {
+            width: 80%;
+            margin-left: 10%;
+        }
+
+        .form_group {
+            width: 100%;
+            height: .8rem;
+            position: relative;
+            margin-bottom: .3rem;
+            display: flex;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: .2rem;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .phone_btn,
+        .smsCode_btn {
+            width: 80%;
+            height: 100%;
+            font-size: .3rem;
+            background-color: transparent;
+            color: black;
+        }
+
+        input::placeholder {
+            color: #b3b3b3;
+        }
+
+        .phone_icon {
+            width: .4rem;
+            height: .48rem;
+            background: url('activity/wxrela/mobile.png');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            display: inline-block;
+            margin-left: .1rem;
+        }
+
+        .code_icon {
+            width: .4rem;
+            height: .48rem;
+            background: url('activity/wxrela/yanzheng.png');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            display: inline-block;
+            margin-left: .1rem;
+        }
+
+        .code_handle {
+            position: absolute;
+            width: 1.8rem;
+            height: .6rem;
+            font-size: .25rem;
+            right: .1rem;
+            top: .1rem;
+            text-align: center;
+            line-height: .6rem;
+            color: white;
+            background-color: #d81617;
+            border-radius: .3rem;
+            -webkit-tap-highlight-color: transparent;
+            z-index: 999;
+        }
+
+        .submit_btn {
+            width: 100%;
+            margin-top: .5rem;
+            height: 1rem;
+            background-color: #d81617;
+            box-shadow: 0px 0px .06rem 0px rgba(255, 36, 0, 0.8);
+            border-radius: .5rem;
+            font-size: .34rem;
+            color: white;
+            letter-spacing: .03rem;
+        }
+
+        .err_view {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            display: none;
+        }
+
+        .err_msg {
+            display: block;
+            background-color: rgba(31, 29, 29, 0.6);
+            padding: .2rem .3rem;
+            z-index: 999;
+            color: white;
+            font-size: .3rem;
+            position: relative;
+            border-radius: .2rem;
+            max-width: 3.5rem;
+        }
+
+        .mask {
+            width: 2rem;
+            height: 2.5rem;
+            background-color: rgba(0, 0, 0, 0.39);
+            position: fixed;
+            font-size: .27rem;
+            color: white;
+            line-height: 4rem;
+            text-align: center;
+            border-radius: .1rem;
+            left: calc((100% - 2rem)/2);
+            top: calc((100% - 5rem)/2);
+        }
+
+        .loading {
+            background: url('activity/wxrela/loading.png');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            width: 1rem;
+            height: 1rem;
+            position: absolute;
+            left: .5rem;
+            top: .5rem;
+            animation: spin 1s infinite linear;
+            -moz-animation: spin 1s infinite linear;
+            -o-animation: spin 1s infinite linear;
+            -webkit-animation: spin 1s infinite linear;
+        }
+
+        .rules {
+            margin-top: .5rem;
+            font-size: .3rem;
+            color: #b3b3b3;
+        }
+
+        .rules a {
+            text-decoration: none;
+            color: #e33;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0);
+                -moz-transform: rotate(0);
+                -o-transform: rotate(0);
+                -webkit-transform: rotate(0);
+            }
+            100% {
+                transform: rotate(360deg);
+                -moz-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                -webkit-transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mask">
+        <i class="loading"></i>
+        <span></span>
+    </div>
+    <header></header>
+    <main>
+        <p class="title">关联后，您的微信账号和手机账号都可以登录</p>
+        <form action="" class="form_view">
+            <div class="form_group">
+                <i class="phone_icon"></i>
+                <input type="tel" placeholder="请输入手机号码" maxlength="11" autocomplete="off" name="mobile" class="phone_btn">
+            </div>
+            <div class="form_group">
+                <i class="code_icon"></i>
+                <input type="tel" placeholder="请输入验证码" maxlength="6" autocomplete="off" name="smsCode" class="smsCode_btn">
+                <div class="code_handle">
+                    获取验证码
+                </div>
+            </div>
+            <p class="rules">若您的手机号未注册，将为您直接注册，注册即视为同意
+                <a href="http://www.gmsweipai.com/gms.app/regist/rules.html">厦门古美术协议</a>
+            </p>
+            <button type="submit" class="submit_btn">关联</button>
+            <p class="push_gms" onclick="m_push()">暂不关联</p>
+        </form>
+        <div class="err_view">
+            <span class="err_msg"></span>
+        </div>
+    </main>
+    <script>
+        var _size = 'wxrela.js?v=' + Date.now();
+        var _s = document.createElement('script');
+        _s.src = _size;
+        document.body.appendChild(_s);
+    </script>
+</body>
+
+</html>

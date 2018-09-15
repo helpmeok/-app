@@ -1,0 +1,230 @@
+
+
+.global {
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+}
+.global .redpackage .box {
+	background-color: #FF605E;
+	border-radius: 4px;
+    text-align: center;
+    top: 15%;
+}
+.global .redpackage .top {
+	overflow: hidden;
+	text-align: center;
+	position: relative;
+	padding: 20px;
+}
+.global .redpackage .top .nickname {
+	color: #FEFF7D;
+	display: block;
+	font-size: 15px;
+	margin-top: 10px;
+}
+.global .redpackage .top .desc {
+	color: #FDD971;
+	display: block;
+	margin-top: 15px;
+	font-size: 13px;
+}
+.global .redpackage .top em {
+	font-weight: bold;
+	font-size: 18px;
+	font-family: 'Micrisoft Yahei';
+	color: #FEFF7D;
+	display: block;
+	margin-top: 15px;
+}
+.global .redpackage .top .headimgurl {
+	display: block;
+	position: relative;
+}
+.global .redpackage .top .headimgurl img {
+	border-radius: inherit;
+	width: 50px;
+	height: 50px;
+	border-radius: 2px;
+}
+
+
+.global .gesture {
+	text-align: center;
+}
+.global .gesture img { /* 手势 */
+	animation:move 1s infinite linear;
+    -webkit-animation:move 1s infinite linear; /* Safari 和 Chrome */
+}
+.global .gesture em {
+	display: block;
+	color: #fff;
+	font-size: 16px;
+	font-family: 'Micrisoft Yahei';
+}
+.global .gesture .button {
+	margin-top: 20px;
+	width: 50%;
+	left: 25%;
+	display: block;
+	padding: 10px 15px;
+	border-radius: 30px;
+	background-color: #FFD000;
+	color: #333;
+}
+
+@keyframes move {
+	from {
+		transform:translate3d(0, 0, 0);
+		-webkit-transform: translate3d(0, 0, 0);
+	}
+	to {
+		transform:translate3d(4rem, 0, 0);
+		-webkit-transform: translate3d(4rem, 0, 0);
+	}
+}
+
+@-webkit-keyframes move {
+	from {
+		transform:translate3d(0, 0, 0);
+		-webkit-transform: translate3d(0, 0, 0);
+	}
+	to {
+		transform:translate3d(4rem, 0, 0);
+		-webkit-transform: translate3d(4rem, 0, 0);
+	}
+}
+
+.global .redpackage .close {
+	position: absolute;
+	right: -10px;
+	height: 30px;
+	width: 30px;
+	background-color: #222;
+	border-radius: 100%;
+	top:-10px;
+	text-align: center;
+	line-height: 30px;
+	font-size: 18px;
+	border:2px solid #999;
+	z-index: 9;
+	color: #fff;
+}
+.global .redpackage .bottom em {
+	position: relative;
+	padding: 15px 20px;
+	font-size: 1rem;
+	color: #fff;
+	display: block;
+	text-align: center;
+	font-family: "Micrisoft Yahei" ;
+}
+.global .redpackage .bottom {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	top: 60%;
+	text-align: center;
+}
+.global .redpackage .rob {
+	width: 5rem;
+	position: relative;
+	height: 5rem;
+	display: inline-block;
+	background-color: #FDD971;
+	text-align: center;
+	line-height: 5rem;
+	color: #333;
+	font-weight: bold;
+	font-size: 2rem;
+	border-radius: 100%;
+	z-index: 1;
+	top: 20px;
+	margin: 0 auto;
+}
+.global .redpackage .bottom {
+	overflow: hidden;
+}
+.global .redpackage .bottom .line:after {
+	position: absolute;
+    left: -20px;
+    top: -145px;
+    right: -20px;
+    content: '';
+    height: 200px;
+    border-radius: 100%;
+    border: 6px solid #FDD971;
+    z-index: 0;
+}
+
+.global .quickreg {
+	padding: 5px;
+	background-color: #fff;
+}
+.global .quickreg .tab .item {
+	padding: 10px;
+	margin-bottom: 5px;
+}
+.global .quickreg .window .close {
+    position: absolute;
+    right: -15px;
+    top: -15px;
+    background-color: #ee3333;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 100%;
+    z-index: 999;
+    font-size: 20px;
+    border: 2px solid rgba(255,255,255,0.2);
+}
+
+.global .layout > ul:before {
+	display: none;
+}
+.global .quickreg .req-code {
+	color: #333;
+	border-radius: 2px;
+}
+.global .quickreg .req-code.disable {
+	background-color: #eee;
+	color: #333;
+}
+
+.global .share .modular li i {
+	font-size: 3rem;
+}
+.global .share .modular li .button {
+	-webkit-transition: .3s;
+    transition: .3s;
+}
+.global .share .modular li i {
+	-webkit-transition: .3s;
+    transition: .3s;  
+}
+.global .share .modular li .button.active i {
+	-webkit-transform: scale(1.25);
+    transform: scale(1.25);
+}
+.global .weixin-share {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.global .weixin-share .box{
+	top: 0;
+}
+
+.global .but{
+    width: 92px;
+    height: 32px;
+    box-shadow: 0px 0px 2px #ccc;
+    display: block;
+    border-radius: 4px;
+    overflow: hidden;
+}

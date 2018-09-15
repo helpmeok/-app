@@ -1,0 +1,39 @@
+.initialization {
+    position: absolute; left: 50%; top: 40%; width: 5rem;height: 5rem;
+    background-color: rgba(0,0,0,0.5); margin-left: -2.5rem; margin-top: -2.5rem;
+    z-index: 999; border-radius: 4px; text-align: center;
+}
+.initialization.on {
+    opacity: 0; -webkit-animation: fadein 1s linear forwards; animation: fadein 1s linear forwards;
+}
+.initialization.off {
+    opacity: 1; -webkit-animation: fadeout 1s linear forwards; animation: fadeout 1s linear forwards;
+}
+.initialization .loader {
+    border-top: 1.0rem solid rgba(255, 255, 255, 0.2);
+    border-right: 1.0rem solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1.0rem solid rgba(255, 255, 255, 0.2);
+    border-left: 1.0rem solid #ffffff;
+    -webkit-animation: loader .5s infinite linear;
+    animation: loader .5s infinite linear;
+    vertical-align: middle;
+    border-width: .2rem;
+}
+.initialization .loader, .initialization .loader:after {
+    border-radius: 50%;
+    width: 3rem; 
+    height: 3rem;
+    top: .8rem;
+}
+@-webkit-keyframes loader {
+  0% { -webkit-transform: rotate(0deg); transform: rotate(0deg);}
+  100% {-webkit-transform: rotate(360deg); transform: rotate(360deg);}
+}
+@keyframes loader {
+  0% {-webkit-transform: rotate(0deg);transform: rotate(0deg);}
+  100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-webkit-keyframes fadein {to { opacity: 1; }}
+@keyframes fadein { to {opacity: 1; }}
+@-webkit-keyframes fadeout { to { opacity: 0; }}
+@keyframes fadeout { to { opacity: 0; } }

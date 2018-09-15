@@ -1,0 +1,62 @@
+<div class = "viewbox">
+	<div class = "header">
+		<div class = "wrap">
+			<div class = "l">
+			</div>
+			<div class = "c">
+				<em>{{title}}</em>
+			</div>
+			<div class = "r">
+
+			</div>
+		</div>
+	</div>
+	<div class = 'body'>
+		<sep-scroll>
+			<sep-render>
+				<section slot = 'empty'>
+					<sep-empty icon = 'icon-comment' text = '暂无消息'>
+						请稍后再试~
+					</sep-empty>
+				</section>
+				<section slot = "entity">
+					<div class="layout">
+						<ul>
+							<li v-for = "el in $model.list" class="margin-bottom-far">
+								<div class="fillitem button" v-click = "{method : m_looked , args : el}">
+									<div class="top">
+										<div class="l">
+											<span :class = "{'bg-red' : !el.looked, 'bg-gray' : el.looked}" class = "label margin-right-near fg-white fz-small">{{el.looked 
+											? '已读' : '未读'}}</span>
+											{{el.attach_json.msgType}}
+										</div>
+										<div class="r fg-gray fz-medium">
+											{{el.createTime | date('yyyy-MM-dd hh:mm:ss')}}
+										</div>
+									</div>
+									<div class="item topalign link">
+										<div class="content fg-gray fz-medium">
+											{{el.attach_json.content}}
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class = 'pager'>
+				      <div class = 'wrap'>
+				        <a class = 'button' :class = "{'disable' : 1 == page_index}" v-click = '{method : m_topage, args : 1}'>首页</a>
+				        <a class = 'button' :class = "{'disable' : 1 == page_index}" v-click = '{method : m_topage, args : page_index - 1}'>上一页</a>
+				        <a class = 'button' :class = "{'disable' : page_counter == page_index}" v-click = '{method : m_topage, args : page_index + 1}'>下一页</a>
+				        <a class = 'button' :class = "{'disable' : page_counter == page_index}" v-click = '{method : m_topage, args : page_counter}'>尾页</a>
+				      </div>
+				    </div>
+				</section>
+			</sep-render>
+			<section slot = "bottom">
+				<sep-dev></sep-dev>
+			</section>
+		</sep-scroll>
+	</div>
+</div>
+

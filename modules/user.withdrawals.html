@@ -1,0 +1,89 @@
+<div class="viewbox">
+    <div class="header">
+        <div class="wrap">
+            <div class="l">
+                <a back = 'user.money' class="button"><i class = "icon-back"></i></a>
+            </div>
+            <div class="c">
+                <em>{{title}}</em>
+            </div>
+            <div class="r">
+            </div>
+        </div>
+    </div>
+    <div class = 'body'>
+        <sep-scroll :style="other.user ? {bottom : '50px'} : ''">
+            <form v-form = 'form'>
+                <div class="layout" v-if = 'null != other.user'>
+                    <ul>
+                        <li v-if = 'bank'>
+                            <!-- link(可链接) link-arrow(带箭头链接) -->
+                            <div class="item button" push="bank.choice">
+                                <div class="media medium">
+                                    <img :src="bank.bankIcon">
+                                </div>
+                                <div class="content">
+                                    <div class="props">
+                                        <div class="prop">
+                                            <div class="l">
+                                                {{bank.bankName}}
+                                            </div>
+                                            <div class="r">
+
+                                            </div>
+                                        </div>
+                                        <div class="prop">
+                                            <div class="l number fz-medium fg-gray">
+                                               
+                                            </div>
+                                            <div class="r fz-medium fg-gray">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="other">
+                                </div>
+                            </div>
+                        </li>
+                        <li v-else>
+                            <!-- link(可链接) link-arrow(带箭头链接) -->
+                            <div class="button item link-arrow margin-top-far" push="bank.choice">
+                                <div class="content fz-large fg-black text-align-center">
+                                    请选择提现银行
+                                </div>
+                                <div class="other">
+                                </div>
+                            </div>
+                        </li>
+                        <li> 
+                            <div class="item field margin-top-far">
+                                <div class="content">
+                                    <em class="name fz-medium fg-black">
+                                        金额(元):
+                                    </em>
+                                    <div class="edit number">
+                                        <input type="number" placeholder="当次提现金额请大于100元">
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="prompt fz-small fg-red">红包金额不可提现</span>
+                        </li>
+                    </ul>
+                </div>
+                <sep-sessionless v-else>
+                </sep-sessionless>
+            </form>    
+            
+            <section slot="bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+
+        <div class="footer center" v-if = 'null != other.user'>
+            <div class = "bg-white">
+                <sep-button text = "确定提现" wtext = '请稍后..' class = "submit default red save" v-click="form.m_submit"></sep-button>
+            </div>
+        </div>
+    </div>
+</div>

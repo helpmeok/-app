@@ -1,0 +1,171 @@
+.timer-shop .body .top {
+    width: 100%;
+    height: 200px;
+    background: url('../images/shop/top.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    position: relative;
+    top: 0;
+    right: 0;
+}
+
+.timer-shop .body .top .tenant-list {
+    width: 120px;
+    height: 45px;
+    background: url('../images/shop/btn_list.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 130px;
+    bottom: 10px;
+}
+
+.timer-shop .body .top .tenant-entry {
+    width: 120px;
+    height: 45px;
+    background: url('../images/shop/btn_entry.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+.timer-shop .body .timer-goods {
+    width: 96%;
+    height: 160px;
+    background: url('../images/shop/countdownbg.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin-left: 2%;
+    margin-top: 10px;
+    position: relative;
+}
+
+.timer-shop .body .timer-goods .content {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 90px;
+}
+
+.timer-shop .body .timer-goods .content .good-image {
+    width: 100px;
+    height: 80px;
+    margin-top: 10px;
+
+}
+
+.timer-shop .body .timer-goods .content .good-image .image {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.timer-shop .body .timer-goods .content .good-image img {
+    width: auto;
+}
+
+.timer-shop .body .timer-goods .content .good-title {
+    width: 60%;
+    height: 100%;
+    padding-top: 20px;
+    position: relative;
+    color: #ffffff;
+}
+
+.timer-shop .body .timer-goods .content .bid-price {
+    background: url('../images/shop/btn_offer.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 90px;
+    height: 30px;
+    border-radius: 10px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.timer-shop .body .timer-goods .mask {
+    width: 100%;
+    height: 55px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    color: #cccccc;
+    font-size: 18px;
+}
+
+.timer-shop .body .timer-goods .mask .l {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 30px;
+}
+
+.timer-shop .body .timer-goods .mask .l .count-down {
+    background: url('../images/shop/countdown.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 23px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.timer-shop .body .timer-goods .mask .r span {
+    font-size: 22px;
+}
+
+.timer-shop .body .goods-list {
+    width: 94%;
+    margin-left: 3%;
+    margin-top: 5px;
+}
+
+.timer-shop .body .goods-list .utop {
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.timer-shop .body .goods-list .utop .list {
+    width: 30%;
+    height: 140px;
+    margin-bottom: 10px;
+    background-color: aquamarine;
+}
+.timer-shop .body .goods-list .utop .list:nth-of-type(1),
+.timer-shop .body .goods-list .utop .list:nth-of-type(2){
+    width: 48%;
+}
+.timer-shop .body .goods-list .ubottom {
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+}
+.timer-shop .body .goods-list .ubottom .list{
+    width: 25%;
+    height: 100px;
+    /* border: solid 1px lightgray; */
+    background-color: lightgrey;
+}
+.timer-shop .body .goods-list .ubottom .list:nth-of-type(1),
+.timer-shop .body .goods-list .ubottom .list:nth-of-type(3),
+.timer-shop .body .goods-list .ubottom .list:nth-of-type(6),
+.timer-shop .body .goods-list .ubottom .list:nth-of-type(8){
+    background-color: #fafafa;
+}

@@ -1,0 +1,30 @@
+.goods-list .content .props .prop {
+    margin-bottom: 0px !important;
+}
+
+.goods-list .content .singleline-two {
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.goods-list .border-radius-near {
+    width: 110px !important;
+    height: 70px !important;
+    margin-top: 12px !important;
+}
+
+.goods-list .border-radius-near img {
+    width: auto !important;
+}
+.goods-list .home_btn{
+    background-color: #e33;
+    padding: 3px 6px;
+    border-radius: 13.5px;
+    color: white;
+    font-size: 14px;
+}

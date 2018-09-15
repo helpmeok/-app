@@ -1,0 +1,87 @@
+<div class="viewbox">
+	<div class="header">
+		<div class="wrap">
+			<div class="l">
+				<a back class="button"><i class="icon-back"></i></a>
+			</div>
+			<div class="c">
+				<em>{{title}}</em>
+			</div>
+			<div class="r">
+				<a v-click="m_desc" class="button icon-questionfill"></a>
+			</div>
+		</div>
+	</div>
+	<div class='body' style="background-color: white;">
+		<sep-scroll>
+			<sep-render>
+				<section slot="entity">
+					<div class="top" :class="base_bg">
+						<div class="layout">
+							<ul style="height: 100px;">
+								<li style="background-color: white;color: black;">
+									<!-- link(可链接) link-arrow(带箭头链接) -->
+									<div class="item topalign button ">
+										<div class="content">
+											<div class="props">
+												<div class="prop">
+													<div class="l">
+														可用红包总额(RMB)
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="money number">
+										{{$model.totalAmounts}}
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="layout" style="margin-top: 5px;">
+						<ul>
+
+							<li class='margin-top-15px'>
+								<!-- link(可链接) link-arrow(带箭头链接) -->
+								<div class="button item link-arrow" push="user.red.list?type=11">
+									<div class="content">
+										红包消费
+									</div>
+									<div class="other">
+										<span class='fg-yellow number'>{{$model.consumptionAmounts}}</span>
+									</div>
+								</div>
+							</li>
+						</ul>
+
+					</div>
+					<div class="container">
+						<div class="container_text">
+							<span class="tl">我的优惠券</span>
+							<span class="tr" v-click="m_alert">使用规则</span>
+						</div>
+						<div class="ticket_box" style="padding-top: 10px;padding-bottom: 20px;">
+							<div class="ticket_item" v-for="el in list">
+								<div class="fl" style="position: relative;left: 0;top: 0;">
+									<p style="font-weight: bold;font-size: 17px;padding-left: 10px;margin-top: 5%;" class="text_remark">{{el.remark}}</p>
+									<div style="position: absolute;bottom: 10%;">
+										<p style="font-size: 12px;padding-left: 10px; letter-spacing: 1px;" class="text_data">有效期:{{el.startValidity}}-{{el.endValidity}}</p>
+										<p style="font-size: 12px;padding-left: 10px; letter-spacing: 2px;" class="text_hd">本活动最终解释权归古美术所有</p>
+									</div>
+								</div>
+								<div class="fr">
+									<p style="font-weight: bold;text-align: center;font-size: 28px;margin-top: 15%;">¥{{el.money}}</p>
+									<p style="text-align: center;">优惠券</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+			</sep-render>
+
+		</sep-scroll>
+	</div>
+</div>

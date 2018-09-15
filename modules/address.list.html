@@ -1,0 +1,72 @@
+<div class = "viewbox">
+	<div class = "header">
+		<div class = "wrap">
+			<div class = "l">
+				<a back class = "button"><i class = "icon-back"></i></a>
+			</div>
+			<div class = "c">
+				<em>{{title}}</em>
+			</div>
+			<div class = "r">
+				
+			</div>
+		</div>
+	</div>
+	<div class = 'body'>
+		<sep-scroll :style = "other.user ? {bottom:'46px'} : ''">
+			<sep-render>
+				<section slot = "empty">
+					<sep-empty text = "您还没收货地址哦~" icon = "icon-location">
+						单击下方 "新增地址" 添加哦~
+					</sep-empty>
+				</section>
+				<section slot = "entity">
+					<div class = "layout">
+						<ul>
+							<li :class = "{'margin-bottom-far' : el.state}" v-for = "el in $model.list">
+								<div class="item merge button">
+									<div class="content">
+										<div class="props">
+											<div class="prop">
+												<div class="l">
+													{{el.addressee}} 
+													<b class = "jui-number">({{el.mobile}})</b>
+													<label class = "label fg-white bg-red fz-small margin-left-near" v-if = "el.isdefault">默认地址</label>
+												</div>
+												<div class="r">
+													
+												</div>
+											</div>
+											<div class="prop">
+												<div class="l">
+													<div class = "fg-gray">
+														<span class = 'doubleline'>{{el.addressDetail}}</span>
+														<span v-if = 'el.state' class = 'label fg-white bg-lightgreen margin-left-near state'>默认</span>
+													</div>
+												</div>
+												<div class="r">
+													
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="other">
+										<a v-click = "{method : m_push, args : el}" class = "ev-stop button fg-gray icon-write fz-18px padding-near"></a>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</sep-render>
+			<section slot = "bottom">
+				<sep-dev></sep-dev>
+			</section>
+		</sep-scroll>
+		<div class = "footer center" v-if="null != other.user">
+			<div class = "bg-white">
+				<sep-button text = "新增地址" push = "address.edit?from=address.list" class = "save"></sep-button>
+			</div>
+		</div>
+	</div>
+</div>

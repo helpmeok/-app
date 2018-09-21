@@ -118,6 +118,12 @@ define(function (require, exports, module) {
 					slide_back: false
 				}, // 商品拍卖
 				{
+					name: 'agreement',
+					width: '90%',
+					height: '90%',
+					slide_back: false
+				},
+				{
 					name: 'more.list'
 				}, //更多预展列表
 				{
@@ -173,6 +179,9 @@ define(function (require, exports, module) {
 					name: 'user.money.detail',
 					uppull_loader: true
 				},
+				{
+					name: 'seller.add'
+				}, //申请成为商家
 				{
 					name: 'order.list'
 				},
@@ -260,6 +269,9 @@ define(function (require, exports, module) {
 				},
 				{
 					name: 'user.settings'
+				},
+				{ //申请主播页面
+					name: 'apply.anchor'
 				},
 				{
 					name: 'user.findpwd'
@@ -471,20 +483,20 @@ define(function (require, exports, module) {
 					url: false
 				},
 				//				{text : "秒杀", name : "seckill.special", icon : "icon-seckill", onicon : "icon-seckillfill"},
-				{
-					text: "限时拍卖",
-					name: "timer.shop",
-					icon: "icon-shoplight",
-					onicon: "icon-shopfill",
-					url: false
-				},
 				// {
-				// 	text: "商城",
-				// 	name: "http://gmsmall.gmsweipai.com/gms.mall/#/",
+				// 	text: "限时拍卖",
+				// 	name: "timer.shop",
 				// 	icon: "icon-shoplight",
 				// 	onicon: "icon-shopfill",
-				// 	url: true
+				// 	url: false
 				// },
+				{
+					text: "商城",
+					name: "http://gmsmall.gmsweipai.com/gms.mall/#/",
+					icon: "icon-shoplight",
+					onicon: "icon-shopfill",
+					url: true
+				},
 				{
 					text: "消息",
 					name: "msg.list",

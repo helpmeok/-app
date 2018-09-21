@@ -9,7 +9,7 @@ setTimeout(function () {
     document.querySelector("html").style.visibility = "visible"
 }, 100);
 // var __url = 'http://192.168.1.124/regist/regist.html'
-var __url = 'http://www.gmsweipai.com/gms.app'
+var __url = 'http://www.gmsweipai.com/gms.app/#/'
 
 function phoneType() {
     var _ua = navigator.userAgent.toLowerCase();

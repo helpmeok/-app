@@ -220,3 +220,9 @@
 	width: 80px;
 	height: 25px;
 }
+.order-confirm .layout .good-top div{
+	padding-left: 1em;
+}
+.order-confirm .layout>ul>li .item:before{
+	display: none;
+}

@@ -218,7 +218,7 @@ define(function (require, exports, module) {
 										svc.m_force_put_msg('user.center', 'save')
 										svc.m_push('user.center')
 									})
-								}, function (err) {
+								}, function (_err) {
 									console.log(_err)
 									_vm.ispaysubmit = true
 									app.toast.m_show_text(_err.errorMessage);

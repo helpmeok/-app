@@ -72,7 +72,9 @@ define(function (require, exports, module) {
 								return new Promise(function (next, fail) {
 									app.service.home.m_ad_list(
 										null,
+
 										function (data) {
+											console.log(data)
 											next({
 												list: data.advertiseVoList
 											});
@@ -83,7 +85,7 @@ define(function (require, exports, module) {
 							}
 						},
 						default: {
-							model: {
+							model: { 
 								list: []
 							},
 							ondraw: function () {

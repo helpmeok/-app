@@ -15,7 +15,7 @@ window.onresize = size;
 if (localStorage.getItem('user_key')) {
     var msg = confirm('您已经注册过账号，已成为古美术会员，立即前往古美术拍卖吧！')
     if (msg) {
-        window.location.href = 'http://wap.gmsweipai.com/gms.app'
+        window.location.href = 'http://wap.gmsweipai.com/gms.app/#/'
     }
 }
 var isSubmit = true;

@@ -5,8 +5,7 @@ define(function (require, exports, module) {
         view.m_on("init", function () {
             _vm = view.m_vm({
                 data: {
-                    // title: "推荐提成奖励",
-                    title: 15160097321,
+                    title: "推荐提成奖励",
                     // virtual_list : new SepVirtualList({
                     // 	counter : 50,
                     // 	row : 30
@@ -22,8 +21,7 @@ define(function (require, exports, module) {
                 methods: {
                     m_get_date: function () {
                         var model = {
-                            mobile: _vm.title,
-                            // mobile: app.data.user.mobile,
+                            mobile: app.data.user.mobile,
                             pageSize: _vm.pageSize,
                             pageIndex: _vm.pageIndex
                         }

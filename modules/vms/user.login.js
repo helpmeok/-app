@@ -32,7 +32,7 @@ define(function (require, exports, module) {
 							_vm.model.phoneUUID = uuid();
 							app.service.user.m_login(_vm.model, function (data) {
 								var _user = data.memberLoginVo;
-								app.local.m_set('user', _user);
+								app.local.m_set('user', _user); 
 								view.m_reset_button('.submit');
 								var _source = view.query.source;
 								var _location = decodeURIComponent(view.query.location);

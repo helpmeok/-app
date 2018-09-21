@@ -5,6 +5,7 @@
 window.__base = 'http://127.0.0.1'; // 基路径 < 可配置 >
 // window.__api = 'http://wap.gmsweipai.com/gms'; // api 接口路径 < 可配置 >
 window.debug = true; //true为测试环境，false为正式环境
+window.__wx_url = 'http://www.gmsweipai.com/gms.app/wxrela.html'
 // window.__api = 'http://192.168.1.13:8080/gms'; // api 接口路径 < 可配置 >
 window.__api = 'http://192.168.1.192:7777/gms'; // api 接口路径 < 可配置 >
 // window.__api = 'http://192.168.1.99:8080/gms'; // api 接口路径 < 可配置 >
@@ -24,7 +25,8 @@ window.__copyright = {
 window.__jses = { // 第三方 js
 
 };;
-function _m_is_weixin() {//判断浏览器
+
+function _m_is_weixin() { //判断浏览器
 	var _ua = window.navigator.userAgent.toLowerCase();
 	if (_ua.match(/MicroMessenger/i) == 'micromessenger') {
 		return true;
@@ -45,8 +47,8 @@ if (window.debug) {
 			sessionStorage.removeItem('wxCode')
 		} else {
 			window.location.href =
-				'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxceb9d54aec161ad1&redirect_uri=' +
-				encodeURIComponent('http://gmsmall.gmsweipai.com/gms.mall/gms.app/wxrela.html') +
+				'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxcafec248aa195a46&redirect_uri=' +
+				encodeURIComponent(window.__wx_url) +
 				'&response_type=code&scope=snsapi_userinfo&state=' + encodeURIComponent(window.location.hash) + '#wechat_redirect'
 		}
 	} else {

@@ -1,0 +1,106 @@
+<div class="viewbox">
+    <div class="header">
+        <div class="wrap">
+            <div class="l">
+                <a back class="button"><i class = "icon-back"></i></a>
+            </div>
+            <div class="c">
+                <em>{{title}}</em>
+            </div>
+            <div class="r">
+            </div>
+        </div>
+    </div>
+    <div class='body'>
+        <sep-scroll :downpull_lock = 'true'>
+            <div class="article">
+                <div class="wrap">
+                    <ul>
+                       
+                        <li>
+                            <div class="content">
+                                <span class="name">
+                                    一、审核内容
+                                </span>
+                                <p>
+                                评分用户对单件商品做出相应估价、
+评分和说明。
+                                </p>
+                               
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content">
+                                <span class="name">
+                                    二、审核数量
+                                </span>
+                                <p>
+                                    评分用户需平均每天审核不少于30件
+商品，按月累计结算累计超过900件，否则不予提现。
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content">
+                                <span class="name">
+                                    三、申请流程
+                                </span>
+                                <p>
+                                    会员——预备专家（预备专家考核期
+3个月）——正式专家。
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content">
+                                <span class="name">
+                                    四、提成
+                                </span>
+                                <p>
+                                   成为正式专家后，所评分商品订单完成后，
+最接近售价的评分用户获得售价1%的提成奖励，若
+有多个评分用户估价相同且最接近于成交价格，则
+多人同时瓜分商品售价1%的提成奖励。
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content">
+                                <span class="name">
+                                    五、评分依据
+                                </span>
+                                <p>
+                                    商品属性的完整度、各项属性准确性、
+商品性能等条件是否满足，加权进行评分。
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content">
+                                <span class="name">
+                                    六、订单完成
+                                </span>
+                                <p>
+                                   提成将于商品订单完成后打到您的余额账户内。
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content">
+                      
+                                <p style="text-align: center;color: red;font-size: 14px;">
+古美术拥有最终解释权。
+                                </p>
+                            </div>
+                        </li>
+                       
+                    </ul>
+                </div>
+                <a v-click='m_submit' class='red submit button' >确定</a>
+            </div>
+            <section slot="bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+    </div>
+</div>

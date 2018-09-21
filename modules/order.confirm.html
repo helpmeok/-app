@@ -30,7 +30,7 @@
 				<p style="border-bottom: 0;display: none;">
 					其他支付方式：
 				</p>
-				<p style="border-bottom: 0;display: none;" class="wx_pay">
+				<p style="border-bottom: 0;" class="wx_pay">
 					<i class="wxpay wx_pay"></i>
 					使用微信支付
 				</p>
@@ -113,10 +113,9 @@
 								</li>
 							</ul>
 						</div>
-						<div class="layout" style="margin-top: 10px;" v-if="postpone">
+						<!-- <div class="layout" style="margin-top: 10px;" v-if="postpone">
 							<ul>
 								<li>
-									<!-- link(可链接) link-arrow(带箭头链接) -->
 									<div class="button item">
 										<div class="content">
 											<span class="fz-medium fg-gray number">过期时间: {{outConfirmTime}}</span>
@@ -129,7 +128,7 @@
 									</div>
 								</li>
 							</ul>
-						</div>
+						</div> -->
 					</section>
 					<section v-if='0 == tab_index'>
 						<div class="layout">
@@ -168,13 +167,18 @@
 						<ul>
 							<li :push="'goods.detail?id='+el.collectionId" v-for="el in $model.orderVos" style="margin-bottom: 10px;">
 								<div class="fillitem button">
-									<!-- <div class="top">
-										<div class="l">
-											<span class="fg-gray fz-small">
-												订单：{{$model.orderNo}}
+									<div class="good-top">
+										<div>
+											<span class="fz-small">
+												订单：{{el.orderNo}}
 											</span>
 										</div>
-									</div> -->
+										<div>
+											<span class="fg-gray fz-small">
+												下单时间：{{el.createDate}}
+											</span>
+										</div>
+									</div>
 									<div class="item topalign link">
 										<div class="media large">
 											<img :src="el.imgUrl">
@@ -272,7 +276,7 @@
 									</div>
 								</sep-checkboxs>
 							</li>
-							<li style="margin-top: 5px;">
+							<li>
 								<!-- link(可链接) link-arrow(带箭头链接) -->
 								<div class="button item">
 									<div class="content">
@@ -297,7 +301,20 @@
 									</div>
 								</div>
 							</li>
-							<li>
+							<li style="margin-top:5px;" v-if="postpone">
+								<!-- link(可链接) link-arrow(带箭头链接) -->
+								<div class="button item">
+									<div class="content">
+										<span class="fz-medium fg-gray number">过期时间: {{outConfirmTime}}</span>
+									</div>
+									<div class="other">
+										<div class="button default cool red small border-radius-near">
+											申请延期
+										</div>
+									</div>
+								</div>
+							</li>
+							<li style="margin-top:5px;">
 								<div class="item field">
 									<div class="content">
 										<em class="name">
